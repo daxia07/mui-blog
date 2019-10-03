@@ -1,16 +1,18 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "alienz-blog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Blog built with gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Mingxia Li <limingxia07@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.5.0",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-offline": "^3.0.11",
     "gatsby-plugin-react-helmet": "^3.1.10",
     "gatsby-plugin-sharp": "^2.2.27",
+    "gatsby-source-contentful": "^2.1.44",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-transformer-sharp": "^2.2.19",
     "prop-types": "^15.7.2",
@@ -19,6 +21,8 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "babel-preset-gatsby": "^0.2.17",
     "prettier": "^1.18.2"
   },
   "keywords": [
