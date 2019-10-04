@@ -16,6 +16,17 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flexShrink: 0,
   },
+  navBarLink: {
+    color: 'black',
+    textDecoration: 'none'
+  },
+  navLinkActive: {
+    color: theme.palette.common.grey,
+  },
+  featureLink: {
+    textDecoration: 'none',
+    color: theme.palette.primary.light
+  },
   mainFeaturedPost: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],

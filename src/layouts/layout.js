@@ -2,9 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./Header"
-import Copyright from "./Copyright"
 import Footer from "./Footer"
-// import "./layout.css"
+import { CssBaseline } from "@material-ui/core"
+import Container from "@material-ui/core/Container"
+import NavBar from "./NavBar"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,20 +19,15 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+    <React.Fragment>
+      <CssBaseline/>
+      <Container>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <NavBar/>
         <main>{children}</main>
-        <Footer/>
-      </div>
-    </>
+      </Container>
+      <Footer/>
+    </React.Fragment>
   )
 }
 
