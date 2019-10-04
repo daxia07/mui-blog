@@ -39,20 +39,12 @@ function SEO({ description, lang, meta, title }) {
           name: `description`,
           content: metaDescription,
         },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
       ].concat(meta)}
-    />
+    >
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    </Helmet>
   )
 }
 
