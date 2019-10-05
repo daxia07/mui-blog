@@ -1,7 +1,6 @@
 import React from "react"
-import { Toolbar } from "@material-ui/core"
+import { Toolbar, Button} from "@material-ui/core"
 import useStyles from "../styles/style"
-import Link from "@material-ui/core/Link"
 import {Link as GLink}  from "gatsby"
 
 const sections = [
@@ -22,9 +21,9 @@ function NavBar() {
     <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
       {sections.map(section => (
         <GLink to={"/" + section.toLowerCase()} key={section} className={classes.navBarLink} activeClassName={classes.navLinkActive}>
-          <Link color="inherit" noWrap key={section} variant="body2" className={classes.toolbarLink}>
+          <Button color="inherit" className={classes.toolbarLink}>
             {section}
-          </Link>
+          </Button>
         </GLink>
       ))}
     </Toolbar>

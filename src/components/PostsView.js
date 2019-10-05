@@ -13,8 +13,8 @@ const PostsView = ({ posts }) => {
           Latest Posts
         </Typography>
         <Divider/>
-        {posts.map(post => (
-          <PostView post={post}  key={post.title}/>
+        {posts.map((post,index) => (
+          <PostView post={post}  key={index}/>
         ))}
         {posts.title}
       </Grid>
