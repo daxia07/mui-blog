@@ -21,7 +21,7 @@ function NavBar() {
   return (
     <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
       {sections.map(section => (
-        <GLink to={"/" + section.toLowerCase()} className={classes.navBarLink} activeClassName={classes.navLinkActive}>
+        <GLink to={"/" + section.toLowerCase()} key={section} className={classes.navBarLink} activeClassName={classes.navLinkActive}>
           <Link color="inherit" noWrap key={section} variant="body2" className={classes.toolbarLink}>
             {section}
           </Link>
