@@ -8,7 +8,7 @@ import FeaturedPost from "../components/FeaturedPost"
 import SubFeaturedPost from "../components/SubFeaturedPost"
 import PostsView from "../components/PostsView"
 
-//dummy data
+
 const featuredPosts = [
   {
     imgUrl: "https://source.unsplash.com/random",
