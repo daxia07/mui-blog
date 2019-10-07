@@ -31,35 +31,93 @@ const featuredPosts = [
 ];
 
 export const query = graphql`
-    query MarkDownBlog {
-        allMarkdownRemark(filter: {parent: {}}) {
+    query MyQuery {
+        featured: allContentfulBlogPost(filter: {draft: {eq: false}, featured: {eq: true}}) {
             edges {
                 node {
-                    rawMarkdownBody
-                    parent {
-                        ... on File {
-                            name
+                    author {
+                        name
+                    }
+                    description {
+                        description
+                    }
+                    heroImage {
+                        file {
+                            url
                         }
                     }
+                    slug
+                    title
                 }
             }
         }
-    }`
-
-
-const IndexPage = ({data}) => {
-  //test module
-  let posts = [];
-  const mdPosts = data.allMarkdownRemark.edges;
-  mdPosts.forEach(ele => {
-    if (ele.node.parent.name) {
-      posts.push(ele.node.rawMarkdownBody);
+        subFeatured: allContentfulBlogPost(filter: {subFeature: {eq: true}, draft: {eq: false}}) {
+            edges {
+                node {
+                    author {
+                        name
+                    }
+                    description {
+                        description
+                    }
+                    heroImage {
+                        file {
+                            url
+                        }
+                    }
+                    slug
+                    title
+                    publishDate(formatString: "MMMM DD, YYYY")
+                }
+            }
+        }
+        otherPosts: allContentfulBlogPost(filter: {subFeature: {eq: false}, featured: {eq: false}, draft: {eq: false}}) {
+            edges {
+                node {
+                    author {
+                        name
+                    }
+                    body {
+                        body
+                    }
+                    createdAt(fromNow: true)
+                    description {
+                        description
+                    }
+                    heroImage {
+                        file {
+                            url
+                        }
+                    }
+                    slug
+                    publishDate(fromNow: true)
+                    title
+                    tags
+                    category
+                }
+            }
+        }
     }
-  })
+`
+
+const extractFeaturedPost = node => ({
+    author: node.author.name,
+    description: node.description.description,
+    imgUrl: node.heroImage.file.url,
+    slug: node.slug,
+    title: node.title
+  });
+
+const IndexPage = ({ data }) => {
+  const {featured, otherPosts, subFeatured} = data;
+  // extract data from featured post
+  const featuredPost = extractFeaturedPost(featured.edges[0].node);
+  let posts = [];
+  console.log(data);
   return (
   <Layout>
     <SEO title="Home" />
-    <FeaturedPost/>
+    <FeaturedPost post={featuredPost}/>
     <SubFeaturedPost posts={featuredPosts}/>
     <PostsView posts={posts} />
     {/*<div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>*/}
