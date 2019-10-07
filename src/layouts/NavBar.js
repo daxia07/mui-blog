@@ -6,7 +6,7 @@ import {Link as GLink}  from "gatsby"
 const sections = [
   'Development',
   'Investment',
-  'Data Science',
+  'Data',
   'Cooking',
   'Business',
   'Travel',
