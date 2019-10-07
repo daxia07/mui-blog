@@ -9,27 +9,6 @@ import SubFeaturedPost from "../components/SubFeaturedPost"
 import PostsView from "../components/PostsView"
 
 
-const featuredPosts = [
-  {
-    imgUrl: "https://source.unsplash.com/random",
-    imgTitle: "image Title",
-    slug: "1",
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
-  {
-    imgUrl: "https://source.unsplash.com/random",
-    imgTitle: "image Title",
-    slug: "2",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
-];
-
 export const query = graphql`
     query MyQuery {
         featured: allContentfulBlogPost(filter: {draft: {eq: false}, featured: {eq: true}}) {
@@ -108,21 +87,29 @@ const extractFeaturedPost = node => ({
     title: node.title
   });
 
+const extractSubFeaturedPost = (edges) => {
+  let ret = [];
+  edges.forEach(edge => {
+    const {title, slug, publishDate} = edge.node;
+    const imgUrl = edge.node.heroImage.file.url;
+    const {description} = edge.node.description;
+    ret.push({title, slug, publishDate, imgUrl, description});
+  });
+  return ret;
+}
+
 const IndexPage = ({ data }) => {
   const {featured, otherPosts, subFeatured} = data;
-  // extract data from featured post
   const featuredPost = extractFeaturedPost(featured.edges[0].node);
+  const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges);
   let posts = [];
-  console.log(data);
+  console.log(otherPosts);
   return (
   <Layout>
     <SEO title="Home" />
     <FeaturedPost post={featuredPost}/>
-    <SubFeaturedPost posts={featuredPosts}/>
+    <SubFeaturedPost posts={subFeaturedPost}/>
     <PostsView posts={posts} />
-    {/*<div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>*/}
-    {/*  <Image />*/}
-    {/*</div>*/}
   </Layout>
 )}
 
