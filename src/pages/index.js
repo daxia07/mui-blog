@@ -1,12 +1,12 @@
 import React from "react"
 import {graphql} from "gatsby"
 import Layout from "../layouts/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
-// import useStyles from "../styles/style"
 import FeaturedPost from "../components/FeaturedPost"
 import SubFeaturedPost from "../components/SubFeaturedPost"
+// import BlogCard from "../components/BlogCard"
 import PostsView from "../components/PostsView"
+import {extractFeaturedPost, extractSubFeaturedPost, extractOtherPosts} from "../utils/extractor"
 
 
 export const query = graphql`
@@ -55,9 +55,20 @@ export const query = graphql`
                 node {
                     author {
                         name
+                        avatar {
+                            file {
+                                url
+                            }
+                        }
                     }
                     body {
                         body
+                        internal {
+                            content
+                        }
+                        childMarkdownRemark {
+                            excerpt(format: PLAIN, pruneLength: 100, truncate: true)
+                        }
                     }
                     createdAt(fromNow: true)
                     description {
@@ -73,43 +84,29 @@ export const query = graphql`
                     title
                     tags
                     category
+                    description {
+                        description
+                    }
                 }
             }
         }
     }
 `
 
-const extractFeaturedPost = node => ({
-    author: node.author.name,
-    description: node.description.description,
-    imgUrl: node.heroImage.file.url,
-    slug: node.slug,
-    title: node.title
-  });
-
-const extractSubFeaturedPost = (edges) => {
-  let ret = [];
-  edges.forEach(edge => {
-    const {title, slug, publishDate} = edge.node;
-    const imgUrl = edge.node.heroImage.file.url;
-    const {description} = edge.node.description;
-    ret.push({title, slug, publishDate, imgUrl, description});
-  });
-  return ret;
-}
-
 const IndexPage = ({ data }) => {
   const {featured, otherPosts, subFeatured} = data;
   const featuredPost = extractFeaturedPost(featured.edges[0].node);
   const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges);
-  let posts = [];
+  const posts = extractOtherPosts(otherPosts.edges);
+  console.log(posts);
   console.log(otherPosts);
   return (
   <Layout>
     <SEO title="Home" />
     <FeaturedPost post={featuredPost}/>
     <SubFeaturedPost posts={subFeaturedPost}/>
-    <PostsView posts={posts} />
+    {/*<PostsView posts={posts} />*/}
+    {/*<BlogCard/>*/}
   </Layout>
 )}
 
