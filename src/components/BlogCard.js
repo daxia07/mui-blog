@@ -5,7 +5,6 @@ import { makeStyles, Typography } from "@material-ui/core"
 import {Link} from 'gatsby'
 
 const BlogCard = ({post}) => {
-  console.log(post);
   const {imgUrl, avatar, name, firstName, lastName, title, slug, description,
     body, excerpt, tags, createdAt} = post;
   const classes = makeStyles(theme => ({
@@ -15,7 +14,7 @@ const BlogCard = ({post}) => {
       boxShadow: `hsla(0, 0, 0, .2) 0 4px 2px -2px`,
       fontWeight: 100,
       margin: `48px auto`,
-      width: `80%`,
+      width: `100%`,
       // [theme.breakpoints.between('sm','md')]:{
       //   width: `28rem`
       // },

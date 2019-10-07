@@ -40,3 +40,41 @@ export const blogBasicFragment = graphql`
         }
     }
 `
+
+export const blogFeatureFragment = graphql`
+    fragment BlogFeature on ContentfulBlogPost {
+        author {
+            name
+        }
+        description {
+            description
+        }
+        heroImage {
+            file {
+                url
+            }
+        }
+        slug
+        title
+    }
+`
+
+
+export const blogSubFeatureFragment = graphql`
+    fragment BlogSubFeature on ContentfulBlogPost {
+        author {
+            name
+        }
+        description {
+            description
+        }
+        heroImage {
+            file {
+                url
+            }
+        }
+        slug
+        title
+        publishDate(formatString: "MMMM DD, YYYY")
+    }
+`

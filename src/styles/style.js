@@ -81,6 +81,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
   },
+  icons: {
+    fill: `lighten(#333, 40%)`,
+    height: `24px`,
+    marginRight: `.5rem`,
+    transition: `.25s ease`,
+    width: `24px`,
+    '&:hover': {
+      fill: `#ff4d4d`
+    },
+  },
 }));
 
 export default useStyles
