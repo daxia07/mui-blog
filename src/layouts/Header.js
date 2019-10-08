@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import SearchIcon from "@material-ui/icons/Search"
 import useStyles from "../styles/style"
+import {Link} from 'gatsby'
 
 
 const capitalize = str => {
@@ -32,7 +33,7 @@ const Header = ({ siteTitle }) => {
         noWrap
         className={classes.toolbarTitle}
       >
-        {capitalize(title)}
+        <Link to={"/"} style={{textDecoration: 'none', color: 'black'}}>{capitalize(title)}</Link>
       </Typography>
       <IconButton>
         <SearchIcon />

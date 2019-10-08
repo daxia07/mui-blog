@@ -37,14 +37,12 @@ export const extractOtherPosts = (edges) => {
 }
 
 export const extractOnePost = node => {
-    const {createdAt, category, tags, title} = node;
-    const slug = node.fields.slug;
-    const imgUrl = node.heroImage.file.url;
-    const {name, firstName, lastName} = node.author;
-    const avatar = node.author.avatar.file.url;
-    const {body} = node.body;
-    const {excerpt} = node.body.childMarkdownRemark;
-    const {description} = node.description;
+    const { createdAt, category, tags, title,
+      fields:{slug}, heroImage:{file:{url: imgUrl}},
+      author:{name, firstName, lastName, avatar:{file:{url:avatar}},
+        shortBio:{childMarkdownRemark:{excerpt:bio}}},
+      body:{body, childMarkdownRemark:{excerpt, timeToRead, wordCount:{words}}},
+      description:{description}} = node;
     return {createdAt, category, slug, tags, title, imgUrl, body, avatar,
-      name, firstName, lastName, description, excerpt};
+      name, firstName, lastName, description, excerpt, bio, words, timeToRead};
 }

@@ -63,7 +63,6 @@ const IndexPage = ({ data }) => {
       <PostsView posts={posts} />
       <Sidebar topTrends={topTrends.edges}/>
     </Grid>
-
   </Layout>
 )}
 

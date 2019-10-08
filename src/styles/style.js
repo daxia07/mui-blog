@@ -91,6 +91,19 @@ const useStyles = makeStyles(theme => ({
       fill: `#ff4d4d`
     },
   },
+  container: {
+    width: `70%`,
+    maxWidth: `100%`,
+    position: `relative`,
+    marginLeft: `auto`,
+    marginRight: `auto`,
+    paddingRight: 15,
+    paddingLeft: 15,
+    marginTop: 30,
+    [theme.breakpoints.down('md')]: {
+      width: `90%`
+    },
+  },
 }));
 
 export default useStyles

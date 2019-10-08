@@ -39,6 +39,11 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
             name
             lastName
             firstName
+            shortBio {
+              childMarkdownRemark {
+                excerpt(format: PLAIN, pruneLength: 140, truncate: true)
+              }
+            }
             avatar {
                 file {
                     url
@@ -52,6 +57,10 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
               }
               childMarkdownRemark {
                   excerpt(format: PLAIN, pruneLength: 100, truncate: true)
+                  timeToRead
+                  wordCount {
+                      words
+                  }
               }
           }
           createdAt(fromNow: true)
