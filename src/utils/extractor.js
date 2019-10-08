@@ -35,3 +35,16 @@ export const extractOtherPosts = (edges) => {
   });
   return ret;
 }
+
+export const extractOnePost = node => {
+    const {createdAt, category, tags, title} = node;
+    const slug = node.fields.slug;
+    const imgUrl = node.heroImage.file.url;
+    const {name, firstName, lastName} = node.author;
+    const avatar = node.author.avatar.file.url;
+    const {body} = node.body;
+    const {excerpt} = node.body.childMarkdownRemark;
+    const {description} = node.description;
+    return {createdAt, category, slug, tags, title, imgUrl, body, avatar,
+      name, firstName, lastName, description, excerpt};
+}
