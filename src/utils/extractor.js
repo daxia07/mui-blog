@@ -22,7 +22,7 @@ export const extractOtherPosts = (edges) => {
   let ret = [];
   edges.forEach(edge => {
     console.log(edge);
-    const {createdAt, category, tags, title} = edge.node;
+    const {createdAt, category, tags, title, textType} = edge.node;
     const slug = edge.node.fields.slug;
     const imgUrl = edge.node.heroImage.file.url;
     const {name, firstName, lastName} = edge.node.author;

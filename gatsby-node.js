@@ -63,6 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
                   }
               }
           }
+          textType
           createdAt(fromNow: true)
           description {
               description

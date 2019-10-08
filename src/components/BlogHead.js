@@ -95,7 +95,6 @@ const BlogHead = ({post}) => {
       marginRight: 3,
     }
   }))();
-  console.log(classes);
 
   return (
     <div className={`${classes.mainHeading}`}>

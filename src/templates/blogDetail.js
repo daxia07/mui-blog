@@ -7,6 +7,7 @@ import BlogHead from "../components/BlogHead"
 import SEO from "../components/seo"
 import { Container } from "@material-ui/core"
 import useStyles from "../styles/style"
+import BlogBody from "../components/BlogBody"
 
 const BlogDetail = ({data}) => {
   console.log(data);
@@ -18,7 +19,7 @@ const BlogDetail = ({data}) => {
       <SEO title={"Blog"}/>
       <Container className={classes.container} >
         <BlogHead post={post}/>
-        <BlogCard post={post}/>
+        <BlogBody post={post}/>
       </Container>
     </Layout>
 )}
@@ -42,6 +43,7 @@ export const pageQuery = graphql`
                     }
                 }
             }
+            textType
         }
     }  
 `
