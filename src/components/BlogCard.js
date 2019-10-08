@@ -7,6 +7,7 @@ import {Link} from 'gatsby'
 const BlogCard = ({post}) => {
   const {imgUrl, avatar, name, firstName, lastName, title, slug, description,
     body, excerpt, tags, createdAt} = post;
+
   const classes = makeStyles(theme => ({
     blogContainer: {
       backgroundColor: theme.palette.background.paper,
@@ -15,15 +16,6 @@ const BlogCard = ({post}) => {
       fontWeight: 100,
       margin: `48px auto`,
       width: `100%`,
-      // [theme.breakpoints.between('sm','md')]:{
-      //   width: `28rem`
-      // },
-      // [theme.breakpoints.between('md','lg')]:{
-      //   width: `40rem`
-      // },
-      // [theme.breakpoints.up('lg')]:{
-      //   width: `50rem`
-      // },
       '& a': {
         color: `#4d4dff`,
         textDecoration: `none`,
@@ -174,14 +166,14 @@ const BlogCard = ({post}) => {
       <div className={classes.blogCover}>
         <div className={classes.blogAuthor}>
           <Typography variant="h6" gutterBottom className={classes.blogAuthorName}>
-            <Link to={`/${name}`}>{`${firstName} ${lastName}`}</Link>
+            <Link to={`/user/${name}`}>{`${firstName} ${lastName}`}</Link>
           </Typography>
         </div>
       </div>
     </div>
     <div className={classes.blogBody}>
       <Typography variant="h4" gutterBottom className={classes.blogTitle}>
-        <Link to={`/${slug}`}>{`${title}`}</Link>
+        <Link to={`/blog/${slug}/`}>{`${title}`}</Link>
       </Typography>
       <div className={classes.blogSummary}>
         <p>{description}{excerpt}</p>

@@ -37,6 +37,9 @@ const FeaturedPost = ({ post }) => {
     mainGrid: {
       marginTop: theme.spacing(3),
     },
+    readMore: {
+      textDecoration: 'none'
+    }
   }));
 
   const classes = useStyles();
@@ -53,8 +56,8 @@ const FeaturedPost = ({ post }) => {
             <Typography variant="h5" color="inherit" paragraph>
               {description}
             </Typography>
-            <GLink to={slug} className={classes.featureLink}>
-              <Typography variant="subtitle1" paragraph>
+            <GLink to={`blog/${slug}/`} className={classes.featureLink} style={{textDecoration: 'none'}}>
+              <Typography variant="subtitle1" paragraph className={classes.readMore} color="primary">
                 Continue reading...
               </Typography>
             </GLink>

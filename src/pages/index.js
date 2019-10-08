@@ -38,8 +38,10 @@ export const query = graphql`
             edges {
                 node {
                     heartedNumber
-                    slug
                     title
+                    fields {
+                        slug
+                    }
                 }
             }
         }

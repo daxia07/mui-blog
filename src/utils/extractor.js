@@ -2,14 +2,15 @@ export const extractFeaturedPost = node => ({
   author: node.author.name,
   description: node.description.description,
   imgUrl: node.heroImage.file.url,
-  slug: node.slug,
+  slug: node.fields.slug,
   title: node.title
 });
 
 export const extractSubFeaturedPost = (edges) => {
   let ret = [];
   edges.forEach(edge => {
-    const {title, slug, publishDate} = edge.node;
+    const {title, publishDate} = edge.node;
+    const slug = edge.node.fields.slug;
     const imgUrl = edge.node.heroImage.file.url;
     const {description} = edge.node.description;
     ret.push({title, slug, publishDate, imgUrl, description});
@@ -21,7 +22,8 @@ export const extractOtherPosts = (edges) => {
   let ret = [];
   edges.forEach(edge => {
     console.log(edge);
-    const {createdAt, category, slug, tags, title} = edge.node;
+    const {createdAt, category, tags, title} = edge.node;
+    const slug = edge.node.fields.slug;
     const imgUrl = edge.node.heroImage.file.url;
     const {name, firstName, lastName} = edge.node.author;
     const avatar = edge.node.author.avatar.file.url;

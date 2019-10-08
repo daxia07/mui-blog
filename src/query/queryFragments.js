@@ -30,13 +30,15 @@ export const blogBasicFragment = graphql`
                 url
             }
         }
-        slug
         publishDate(fromNow: true)
         title
         tags
         category
         description {
             description
+        }
+        fields {
+            slug
         }
     }
 `
@@ -54,8 +56,10 @@ export const blogFeatureFragment = graphql`
                 url
             }
         }
-        slug
         title
+        fields {
+            slug
+        }
     }
 `
 
@@ -73,8 +77,10 @@ export const blogSubFeatureFragment = graphql`
                 url
             }
         }
-        slug
         title
         publishDate(formatString: "MMMM DD, YYYY")
+        fields {
+            slug
+        }
     }
 `

@@ -8,7 +8,7 @@ const SubFeaturedPost = ({posts}) => {
     <Grid container spacing={4} className={classes.cardGrid}>
       {posts.map(post => (
         <Grid item key={post.title} xs={12} md={6}>
-          <CardActionArea component="a" href={`/${post.slug}`}>
+          <CardActionArea component="a" href={`/blog/${post.slug}/`}>
             <Card className={classes.card}>
               <div className={classes.cardDetails}>
                 <CardContent>
