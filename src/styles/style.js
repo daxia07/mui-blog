@@ -1,4 +1,4 @@
-import {makeStyles} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -8,46 +8,46 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
+    justifyContent: "space-between",
+    overflowX: "auto",
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
   },
   navBarLink: {
-    color: 'black',
-    textDecoration: 'none'
+    color: "black",
+    textDecoration: "none",
   },
   navLinkActive: {
     color: theme.palette.common.grey,
   },
   featureLink: {
-    textDecoration: 'none',
-    color: theme.palette.primary.light
+    textDecoration: "none",
+    color: theme.palette.primary.light,
   },
   mainFeaturedPost: {
-    position: 'relative',
+    position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: props => props.featuredPostImg,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    // backgroundImage: props => props.featuredPostImg,
+    backgroundSize: "cover!important",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
-    position: 'relative',
+    position: "relative",
     padding: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
       paddingRight: 0,
     },
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
   card: {
-    display: 'flex',
+    display: "flex",
   },
   cardDetails: {
     flex: 1,
@@ -86,8 +86,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: `.5rem`,
     transition: `.25s ease`,
     width: `24px`,
-    '&:hover': {
-      fill: `#ff4d4d`
+    "&:hover": {
+      fill: `#ff4d4d`,
     },
   },
   container: {
@@ -99,8 +99,8 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 15,
     paddingLeft: 15,
     marginTop: 30,
-    [theme.breakpoints.down('md')]: {
-      width: `90%`
+    [theme.breakpoints.down("md")]: {
+      width: `90%`,
     },
   },
   blogContainer: {
@@ -110,22 +110,22 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 100,
     margin: `48px auto`,
     width: `100%`,
-    '& a': {
+    "& a": {
       color: `#4d4dff`,
       textDecoration: `none`,
       transition: `.25s ease`,
-      '&:hover': {
+      "&:hover": {
         borderColor: `#ff4d4d`,
-        color: `#ff4d4d`
-      }
-    }
+        color: `#ff4d4d`,
+      },
+    },
   },
   blogCover: {
-    background: props => `url("https:${props.imgUrl}")`,
+    // background: props => `url("https:${props.imgUrl}")`,
     backgroundSize: `cover!important`,
     borderRadius: `5px 5px 0 0`,
     height: `15rem`,
-    boxShadow: `inset hsla(0, 0, 0, .2) 0 64px 64px 16px`
+    boxShadow: `inset hsla(0, 0, 0, .2) 0 64px 64px 16px`,
   },
   blogAuthor: {
     margin: `0 auto`,
@@ -133,51 +133,51 @@ const useStyles = makeStyles(theme => ({
     width: `80%`,
   },
   blogAuthorName: {
-    '& a': {
+    "& a": {
       color: `#fff`,
       fontWeight: 100,
     },
-    '&::before': {
+    "&::before": {
       background: props => `url("https:${props.avatar}")`,
-      backgroundSize: `cover`,
+      backgroundSize: `cover!important`,
       borderRadius: `50%`,
-      content: '"  "',
+      content: "\"  \"",
       display: `inline-block`,
       height: `32px`,
       marginRight: `.5rem`,
       position: `relative`,
       top: `8px`,
-      width: `32px`
+      width: `32px`,
     },
   },
   blogBody: {
     margin: `0 auto`,
-    width: `80%`
+    width: `80%`,
   },
-  blogTitle :{
+  blogTitle: {
     paddingTop: theme.spacing(2),
-    '& a': {
+    "& a": {
       color: `#333`,
-      fontWeight: 100
-    }
+      fontWeight: 100,
+    },
   },
-  blogSummary :{
-    '& p': {
-      color: `lighten(#333, 10%)`
-    }
+  blogSummary: {
+    "& p": {
+      color: `lighten(#333, 10%)`,
+    },
   },
-  blogTags :{
-    '& ul': {
+  blogTags: {
+    "& ul": {
       display: `flex`,
       flexDirection: `row`,
       flexWrap: `wrap`,
       listStyle: `none`,
-      paddingLeft: 0
+      paddingLeft: 0,
     },
-    '& li + li': {
-      marginLeft: `.5rem`
+    "& li + li": {
+      marginLeft: `.5rem`,
     },
-    '& a': {
+    "& a": {
       border: `1px solid #999999`,
       borderRadius: `3px`,
       color: `#999999`,
@@ -189,28 +189,28 @@ const useStyles = makeStyles(theme => ({
       textAlign: `center`,
       textTransform: `uppercase`,
       whiteSpace: `nowrap`,
-      width: `5rem`
-    }
+      width: `5rem`,
+    },
   },
   blogFooter: {
     borderTop: `1px solid lighten(#333, 70%)`,
     margin: `0 auto`,
     paddingBottom: `.125rem`,
     width: `80%`,
-    '& ul': {
+    "& ul": {
       listStyle: `none`,
       display: `flex`,
       flex: `row wrap`,
       justifyContent: `flex-end`,
-      paddingLeft: 0
+      paddingLeft: 0,
     },
-    '& li:first-child': {
-      marginRight: `auto`
+    "& li:first-child": {
+      marginRight: `auto`,
     },
-    '& li + li': {
-      marginLeft: `.5rem`
+    "& li + li": {
+      marginLeft: `.5rem`,
     },
-    '& li': {
+    "& li": {
       color: `#999999`,
       fontSize: `.75rem`,
       height: `1.5rem`,
@@ -220,46 +220,46 @@ const useStyles = makeStyles(theme => ({
       textTransform: `uppercase`,
       position: `relative`,
       whiteSpace: `nowrap`,
-      '& a': {
-        color: `#999999`
-      }
-    }
+      "& a": {
+        color: `#999999`,
+      },
+    },
   },
   publishedDate: {
     border: `1px solid #999999`,
     borderRadius: `3px`,
-    padding: `0 .5rem`
+    padding: `0 .5rem`,
   },
   comments: {
-    marginRight: `1rem`
+    marginRight: `1rem`,
   },
   numero: {
     position: `relative`,
-    top: `-0.5rem`
+    top: `-0.5rem`,
   },
   readMore: {
-    textDecoration: 'none'
+    textDecoration: "none",
   },
   hiddenMdDown: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       position: `absolute`,
       transform: `translateY(100%)`,
       bottom: `-140px`,
-      marginTop: 20
-    }
+      marginTop: 20,
+    },
   },
   bigAvatar: {
     margin: 10,
     width: 72,
     height: 72,
-    verticalAlign: `middle`
+    verticalAlign: `middle`,
   },
   authorDescription: {
     marginBottom: 5,
     marginTop: 5,
     fontSize: `0.95rem`,
-    color: `rgba(0,0,0,.44)`,
-    display: `block!important`
+    color: `rgba(0, 0, 0, .44)`,
+    display: `block!important`,
   },
   featuredImage: {
     position: `relative`,
@@ -269,22 +269,22 @@ const useStyles = makeStyles(theme => ({
     width: `100%`,
     height: `auto`,
     // objectFit: `contain`,
-    maxHeight: `350px`
+    maxHeight: `350px`,
   },
   articlePost: {
     fontFamily: `Merriweather`,
     fontSize: `1.125rem`,
     fontHeight: 1.8,
     color: `#222222`,
-    '& img': {
+    "& img": {
       display: `block`,
       margin: `0 auto`,
       marginBottom: `1.5rem`,
       width: `100%`,
       height: `auto`,
       // objectFit: `contain`,
-      maxHeight: `350px`
-    }
+      maxHeight: `350px`,
+    },
   },
   postCategory: {
     position: `absolute`,
@@ -294,28 +294,28 @@ const useStyles = makeStyles(theme => ({
     padding: `10px 15px`,
     fontSize: 14,
     fontWeight: 600,
-    textTransform: `uppercase`
+    textTransform: `uppercase`,
   },
   mainHeading: {
-    padding: `1rem 0`
+    padding: `1rem 0`,
   },
   row: {
     marginRight: theme.spacing(-2),
     marginLeft: theme.spacing(-2),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       display: `flex`,
-      flexWrap: `wrap`
-    }
+      flexWrap: `wrap`,
+    },
   },
   postTopMeta: {
-    marginBottom: `2rem`
+    marginBottom: `2rem`,
   },
   linkDark: {
-    color: `rgba(0,0,0,.8)`,
-    textDecoration: `none`
+    color: `rgba(0, 0, 0, .8)`,
+    textDecoration: `none`,
   },
   textCapitalize: {
-    textTransform: `capitalize!important`
+    textTransform: `capitalize!important`,
   },
   btn: {
     borderColor: `#754abc`,
@@ -332,22 +332,22 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: `nowrap`,
     verticalAlign: `middle`,
     userSelect: `none`,
-    border: `1px solid transparent`
+    border: `1px solid transparent`,
   },
   postTitle: {
     fontWeight: 700,
     marginBottom: `1rem`,
     color: `#111111`,
     fontSize: `2.5rem`,
-    lineHeight: 1.1
+    lineHeight: 1.1,
   },
   postDate: {
-    color: `rgba(0,0,0,.54)`,
+    color: `rgba(0, 0, 0, .54)`,
     display: `inline-block`,
     fontFamily: `PT Sans`,
     fontSize: 15,
     fontWeight: 400,
-    lineHeight: 1.5
+    lineHeight: 1.5,
   },
   dot: {
     marginLeft: 3,
@@ -355,42 +355,42 @@ const useStyles = makeStyles(theme => ({
   },
   tags: {
     overflow: `hidden`,
-    listStyle: 'none',
+    listStyle: "none",
     padding: 0,
     margin: `0 0 20px`,
-    '& a:before': {
-      content: '""',
+    "& a:before": {
+      content: "\"\"",
       position: `absolute`,
       left: -10,
       borderWidth: `10px 10px 10px 0`,
       borderStyle: `solid`,
-      borderColor: `transparent #8e855a`
+      borderColor: `transparent #8e855a`,
     },
-    '& a:after': {
-      content: '""',
+    "& a:after": {
+      content: "\"\"",
       position: `absolute`,
       left: -2,
       top: 8,
       width: 3,
       height: 3,
       background: `#fff`,
-      borderRadius: 5
+      borderRadius: 5,
     },
-    '& li': {
+    "& li": {
       float: `left`,
       padding: 0,
       margin: `0 0 5px 20px`, /* make some space for the triangle */
-      font: `12px/20px Arial, sans-serif`
+      font: `12px/20px Arial, sans-serif`,
     },
     "& a": {
-      position:"relative",
-      display:"block",
-      padding:"0 8px",
-      textDecoration:"none",
-      color:"#fff",
-      background:"#8e855a"
+      position: "relative",
+      display: "block",
+      padding: "0 8px",
+      textDecoration: "none",
+      color: "#fff",
+      background: "#8e855a",
     },
   },
-}));
+}))
 
 export default useStyles

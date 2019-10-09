@@ -2,8 +2,9 @@ let contentfulConfig
 
 try {
   // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
-} catch (_) {}
+  contentfulConfig = require("./.contentful")
+} catch (_) {
+}
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
@@ -15,7 +16,7 @@ const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {
   throw new Error(
-    'Contentful spaceId and the delivery token need to be provided.'
+    "Contentful spaceId and the delivery token need to be provided.",
   )
 }
 
@@ -27,6 +28,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-material-ui", // If you want to use styled components you should change the injection order.
+      options: {
+        stylesProvider: { injectFirst: true },
+        disableAutoprefixing: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-lodash`,
       options: {
@@ -49,7 +57,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
     {

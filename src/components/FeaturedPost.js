@@ -1,29 +1,27 @@
 import React from "react"
 import { Paper } from "@material-ui/core"
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
-import {Link as GLink}  from "gatsby"
+import { Link as GLink } from "gatsby"
 import useStyles from "../styles/style"
 
-
 const FeaturedPost = ({ post }) => {
-  const {imgUrl, title, description, slug} = post;
-  const props = { featuredPostImg: `url(https://${imgUrl})`}
-  const classes = useStyles(props);
-
+  const { imgUrl, title, description, slug } = post
+  const props = { featuredPostImg: `url(https://${imgUrl})` }
+  const classes = useStyles(props)
   return (
-    <Paper className={classes.mainFeaturedPost}>
-      <div className={classes.overlay} />
+    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(https://${imgUrl})` }}>
+      <div className={classes.overlay}/>
       <Grid container>
         <Grid item md={6}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography component="h1" variant="h3" gutterBottom style={{ color: "white" }}>
               {title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography variant="h5" paragraph style={{ color: "white" }}>
               {description}
             </Typography>
-            <GLink to={`blog/${slug}/`} className={classes.featureLink} style={{textDecoration: 'none'}}>
+            <GLink to={`blog/${slug}/`} className={classes.featureLink} style={{ textDecoration: "none" }}>
               <Typography variant="subtitle1" paragraph className={classes.readMore} color="primary">
                 Continue reading...
               </Typography>
