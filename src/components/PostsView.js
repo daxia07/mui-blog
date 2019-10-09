@@ -1,10 +1,10 @@
 import React from "react"
-import { Grid, Typography, Divider } from "@material-ui/core"
-import BlogCard from "./BlogCard"
+import { Divider, Grid, Typography } from "@material-ui/core"
+import BlogBriefCard from "./BlogBriefCard"
 
 
 const PostsView = ({ posts, title }) => {
-  let rTitle = title;
+  let rTitle = title
   if (!title) {
     rTitle = "Latest Posts"
   }
@@ -14,8 +14,8 @@ const PostsView = ({ posts, title }) => {
         {rTitle}
       </Typography>
       <Divider/>
-      {posts.map((post,index) => (
-        <BlogCard post={post}  key={index}/>
+      {posts.map((post, index) => (
+        <BlogBriefCard post={post} key={index}/>
       ))}
       {posts.title}
     </Grid>

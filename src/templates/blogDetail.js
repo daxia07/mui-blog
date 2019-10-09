@@ -1,7 +1,7 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../layouts/layout"
-import {extractOnePost} from "../utils/extractor"
+import { extractOnePost } from "../utils/extractor"
 import BlogHead from "../components/BlogHead"
 import SEO from "../components/seo"
 import { Container } from "@material-ui/core"
@@ -10,9 +10,9 @@ import BlogBody from "../components/BlogBody"
 import AuthorBox from "../components/AuthorBox"
 import useWindowDimensions from "../utils/windowDimensions"
 
-const BlogDetail = ({data}) => {
-  const {width} = useWindowDimensions();
-  const renderHelper = (windowWidth,post) => {
+const BlogDetail = ({ data }) => {
+  const { width } = useWindowDimensions()
+  const renderHelper = (windowWidth, post) => {
     if (windowWidth > 960) {
       return (
         <React.Fragment>
@@ -20,8 +20,8 @@ const BlogDetail = ({data}) => {
           <BlogHead post={post}/>
           <BlogBody post={post}/>
         </React.Fragment>
-      ) }
-    else {
+      )
+    } else {
       return (
         <React.Fragment>
           <BlogHead post={post}/>
@@ -29,10 +29,10 @@ const BlogDetail = ({data}) => {
           <AuthorBox post={post}/>
         </React.Fragment>
       )
-      }
     }
-  const post = extractOnePost(data.contentfulBlogPost);
-  const classes = useStyles();
+  }
+  const post = extractOnePost(data.contentfulBlogPost)
+  const classes = useStyles()
   return (
     <Layout>
       <SEO title={"Blog"}/>
@@ -40,7 +40,8 @@ const BlogDetail = ({data}) => {
         {renderHelper(width, post)}
       </Container>
     </Layout>
-)}
+  )
+}
 
 export const pageQuery = graphql`
     query BlogPostQuery($slug: String) {
@@ -63,7 +64,7 @@ export const pageQuery = graphql`
             }
             textType
         }
-    }  
+    }
 `
 
 export default BlogDetail

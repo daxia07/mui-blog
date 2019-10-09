@@ -392,6 +392,38 @@ const useStyles = makeStyles(theme => ({
       background: "#8e855a",
     },
   },
+  bbCard: {
+    // maxWidth: 345,
+    width: `100%`,
+    boxShadow: `none`,
+    borderRadius: `5px 5px 0 0`,
+    marginTop: 15,
+
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+    // margin: "-70px auto 0",
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
+  },
+  avatar: {
+    marginLeft: 20,
+    width: 72,
+    height: 72,
+  },
+  link: {
+    textDecoration: "none",
+    color: theme.palette.primary.light,
+  },
 }))
 
 export default useStyles

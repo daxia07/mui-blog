@@ -29,13 +29,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-material-ui", // If you want to use styled components you should change the injection order.
-      options: {
-        stylesProvider: { injectFirst: true },
-        disableAutoprefixing: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-lodash`,
       options: {
         disabledFeatures: [`cloning`],

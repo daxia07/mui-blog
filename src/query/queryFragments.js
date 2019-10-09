@@ -1,4 +1,4 @@
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 export const blogBasicFragment = graphql`
     fragment BlogBasic on ContentfulBlogPost {
@@ -18,7 +18,7 @@ export const blogBasicFragment = graphql`
                 content
             }
             childMarkdownRemark {
-                excerpt(format: PLAIN, pruneLength: 100, truncate: true)
+                excerpt(format: PLAIN, pruneLength: 300, truncate: true)
             }
         }
         createdAt(fromNow: true)

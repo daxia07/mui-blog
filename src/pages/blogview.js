@@ -1,9 +1,9 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
-import BlogCard from "../components/BlogCard"
-import {extractOtherPosts} from "../utils/extractor"
+import BlogBriefCard from "../components/BlogBriefCard"
+import { extractOtherPosts } from "../utils/extractor"
 
 
 export const query = graphql`
@@ -18,14 +18,15 @@ export const query = graphql`
     }
 `
 
-const BlogPage = ({data}) => {
-  console.log(data);
-  const posts = extractOtherPosts(data.blogCard.edges);
+const BlogPage = ({ data }) => {
+  console.log(data)
+  const posts = extractOtherPosts(data.blogCard.edges)
   return (
     <Layout>
-      <SEO title="Blog" />
-      <BlogCard post={posts[0]}/>
+      <SEO title="Blog"/>
+      <BlogBriefCard post={posts[0]}/>
     </Layout>
-  )}
+  )
+}
 
 export default BlogPage
