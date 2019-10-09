@@ -21,7 +21,6 @@ export const extractSubFeaturedPost = (edges) => {
 export const extractOtherPosts = (edges) => {
   let ret = [];
   edges.forEach(edge => {
-    console.log(edge);
     const {createdAt, category, tags, title, textType} = edge.node;
     const slug = edge.node.fields.slug;
     const imgUrl = edge.node.heroImage.file.url;

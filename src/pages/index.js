@@ -53,7 +53,6 @@ const IndexPage = ({ data }) => {
   const featuredPost = extractFeaturedPost(featured.edges[0].node);
   const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges);
   const posts = extractOtherPosts(otherPosts.edges);
-  console.log(topTrends);
   return (
   <Layout>
     <SEO title="Home" />
