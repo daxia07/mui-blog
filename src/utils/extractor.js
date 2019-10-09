@@ -31,7 +31,7 @@ export const extractOtherPosts = (edges) => {
     const {excerpt} = edge.node.body.childMarkdownRemark;
     const {description} = edge.node.description;
     ret.push({createdAt, category, slug, tags, title, imgUrl, body, avatar,
-      name, firstName, lastName, description, excerpt});
+      name, firstName, lastName, description, excerpt, textType});
   });
   return ret;
 }

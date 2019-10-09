@@ -1,4 +1,5 @@
 const path = require('path')
+const _ = require('lodash')
 
 const slugify = text => text.toLowerCase()
   .replace(/ /g, '-')
@@ -28,7 +29,6 @@ exports.onCreateNode = ({ node , actions}) => {
 }
 
 exports.createPages = async ({ graphql, actions, reporter}) => {
-  console.log('#################### start');
   const { createPage } = actions;
   const result = await graphql(`
   query {
@@ -37,49 +37,12 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
         node {
           author {
             name
-            lastName
-            firstName
-            shortBio {
-              childMarkdownRemark {
-                excerpt(format: PLAIN, pruneLength: 140, truncate: true)
-              }
-            }
-            avatar {
-                file {
-                    url
-                }
-            }
-          }
-          body {
-              body
-              internal {
-                  content
-              }
-              childMarkdownRemark {
-                  excerpt(format: PLAIN, pruneLength: 100, truncate: true)
-                  timeToRead
-                  wordCount {
-                      words
-                  }
-              }
           }
           textType
-          createdAt(fromNow: true)
-          description {
-              description
-          }
-          heroImage {
-              file {
-                  url
-              }
-          }
           publishDate(fromNow: true)
           title
           tags
           category
-          description {
-              description
-          }
           fields {
               slug
           }
@@ -91,11 +54,24 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
     reporter.panicOnBuild('Error: loading create page query')
   }
   const posts = result.data.allContentfulBlogPost.edges;
+  console.log(posts);
+  console.log('#################### start');
+  const categories = _.chain(posts).map(e => e.node.category).uniq().value();
+  console.log(categories);
   posts.forEach(({ node }, index) => {
     createPage({
       path: `blog/${node.fields.slug}/`,
       component: path.resolve(`./src/templates/blogDetail.js`),
       context: {slug: node.fields.slug}
     })
-  })
+  });
+  categories.forEach((cat, index) => {
+    if (cat) {
+      createPage({
+        path: `category/${cat}/`,
+        component: path.resolve('./src/templates/category.js'),
+        context: {category: cat}
+      })
+    }
+  });
 }

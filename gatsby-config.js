@@ -28,6 +28,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-lodash`,
+      options: {
+        disabledFeatures: [`cloning`],
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)

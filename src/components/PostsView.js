@@ -3,11 +3,15 @@ import { Grid, Typography, Divider } from "@material-ui/core"
 import BlogCard from "./BlogCard"
 
 
-const PostsView = ({ posts }) => {
+const PostsView = ({ posts, title }) => {
+  let rTitle = title;
+  if (!title) {
+    rTitle = "Latest Posts"
+  }
   return (
     <Grid item xs={12} md={8}>
       <Typography variant="h6" gutterBottom>
-        Latest Posts
+        {rTitle}
       </Typography>
       <Divider/>
       {posts.map((post,index) => (

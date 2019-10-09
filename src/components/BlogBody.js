@@ -47,7 +47,7 @@ const BlogBody = ({post}) => {
 
   return (
     <React.Fragment>
-      <img src={imgUrl} className={classes.featuredImage} alt={"feature image"}/>
+      <img src={imgUrl} className={classes.featuredImage} alt={"feature"}/>
       <div style={{position: `relative`}}>
         <div className={classes.postCategory}>
           <GLink to={`/category/${category}/`} style={{textDecoration: `none`, color: `#FFF`}}>{category}</GLink>
