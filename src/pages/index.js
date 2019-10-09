@@ -9,6 +9,7 @@ import {extractFeaturedPost, extractSubFeaturedPost, extractOtherPosts} from "..
 import { Grid } from "@material-ui/core"
 import Sidebar from "../layouts/Sidebar"
 import useStyles from "../styles/style"
+import { StylesProvider, createGenerateClassName } from '@material-ui/styles'
 
 
 export const query = graphql`
@@ -49,6 +50,9 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }) => {
+  const generateClassName = createGenerateClassName({
+    productionPrefix: 'ixp'
+  });
   const {featured, otherPosts, subFeatured, topTrends} = data;
   const featuredPost = extractFeaturedPost(featured.edges[0].node);
   const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges);
@@ -56,12 +60,14 @@ const IndexPage = ({ data }) => {
   return (
   <Layout>
     <SEO title="Home" />
-    <FeaturedPost post={featuredPost}/>
-    <SubFeaturedPost posts={subFeaturedPost}/>
-    <Grid container spacing={5} className={useStyles().mainGrid}>
-      <PostsView posts={posts} />
-      <Sidebar topTrends={topTrends.edges}/>
-    </Grid>
+    <StylesProvider generateClassName={generateClassName}>
+      <FeaturedPost post={featuredPost}/>
+      <SubFeaturedPost posts={subFeaturedPost}/>
+      <Grid container spacing={5} className={useStyles().mainGrid}>
+        <PostsView posts={posts} />
+        <Sidebar topTrends={topTrends.edges}/>
+      </Grid>
+    </StylesProvider>
   </Layout>
 )}
 
