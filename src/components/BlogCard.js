@@ -4,6 +4,7 @@ import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded"
 import { Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 import useStyles from "../styles/style"
+import ArticleTags from "./ArticleTags"
 
 const BlogCard = ({ post }) => {
   const {
@@ -31,13 +32,7 @@ const BlogCard = ({ post }) => {
         <div className={classes.blogSummary}>
           <p>{description}{excerpt}</p>
         </div>
-        <div className={classes.blogTags}>
-          <ul>
-            {tags.map(ele => (
-              <li key={ele}><Link to={`/tags/${ele}/`}>{ele}</Link></li>
-            ))}
-          </ul>
-        </div>
+        <ArticleTags tags={tags}/>
       </div>
 
       <div className={classes.blogFooter}>

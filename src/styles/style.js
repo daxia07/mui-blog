@@ -190,6 +190,7 @@ const useStyles = makeStyles(theme => ({
       textTransform: `uppercase`,
       whiteSpace: `nowrap`,
       width: `5rem`,
+      textDecoration: `none`,
     },
   },
   blogFooter: {
