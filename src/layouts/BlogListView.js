@@ -6,7 +6,10 @@ import useStyles from "../styles/style"
 import BlogCard from "../components/BlogCard"
 
 const BlogListView = ({posts}) => {
-  let url = window.location.pathname;
+  let url = '';
+  if (typeof window !== 'undefined') {
+    url = window.location.pathname;
+  }
   if (url[url.length-1] === `/`) {
     url = url.slice(0, url.length-1);
   }

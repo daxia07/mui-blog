@@ -54,11 +54,9 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
     reporter.panicOnBuild('Error: loading create page query')
   }
   const posts = result.data.allContentfulBlogPost.edges;
-  console.log(posts);
   console.log('#################### start');
   const categories = _.chain(posts).map(e => e.node.category).uniq().value();
   const users = _.chain(posts).map(e => e.node.author.name).uniq().value();
-  console.log(categories);
   posts.forEach(({ node }, index) => {
     createPage({
       path: `blog/${node.fields.slug}/`,
