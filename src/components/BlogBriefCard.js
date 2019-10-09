@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     width: `100%`,
     boxShadow: `none`,
     borderRadius: `5px 5px 0 0`,
-    marginTop: 15,
+    // marginTop: 15,
   },
   bbMedia: {
     height: 0,
@@ -117,7 +117,7 @@ export default function BlogBriefCard({ post }) {
   }
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} style={{ marginTop: 15 }}>
       <CardHeader
         avatar={
           <Link to={`/user/${name}/`}>

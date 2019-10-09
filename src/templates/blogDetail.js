@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { Container } from "@material-ui/core"
 import useStyles from "../styles/style"
 import BlogBody from "../components/BlogBody"
-import AuthorBox from "../components/AuthorBox"
+import AuthorCard from "../components/AuthorCard"
 import useWindowDimensions from "../utils/windowDimensions"
 
 const BlogDetail = ({ data }) => {
@@ -16,7 +16,7 @@ const BlogDetail = ({ data }) => {
     if (windowWidth > 960) {
       return (
         <React.Fragment>
-          <AuthorBox post={post}/>
+          <AuthorCard post={post}/>
           <BlogHead post={post}/>
           <BlogBody post={post}/>
         </React.Fragment>
@@ -26,7 +26,7 @@ const BlogDetail = ({ data }) => {
         <React.Fragment>
           <BlogHead post={post}/>
           <BlogBody post={post}/>
-          <AuthorBox post={post}/>
+          <AuthorCard post={post}/>
         </React.Fragment>
       )
     }
