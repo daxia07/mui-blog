@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import { extractOtherPosts } from "../utils/extractor"
 import BlogListView from "../layouts/BlogListView"
+import { StylesProvider, createGenerateClassName } from '@material-ui/styles'
+
 
 const CategoryPage = ({data}) => {
   const {categoryPosts} = data;
