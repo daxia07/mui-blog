@@ -1,25 +1,46 @@
 import React from "react"
 import {graphql} from "gatsby"
 import Layout from "../layouts/layout"
-import BlogCard from "../components/BlogCard"
 import {extractOnePost} from "../utils/extractor"
 import BlogHead from "../components/BlogHead"
 import SEO from "../components/seo"
 import { Container } from "@material-ui/core"
 import useStyles from "../styles/style"
 import BlogBody from "../components/BlogBody"
+import AuthorBox from "../components/AuthorBox"
+import useWindowDimensions from "../utils/windowDimensions"
 
 const BlogDetail = ({data}) => {
-  console.log(data);
+  const {width} = useWindowDimensions();
+  const renderHelper = (windowWidth,post) => {
+    if (windowWidth > 960) {
+      return (
+        <React.Fragment>
+          <AuthorBox post={post}/>
+          <BlogHead post={post}/>
+          <BlogBody post={post}/>
+        </React.Fragment>
+      ) }
+    else {
+      return (
+        <React.Fragment>
+          <BlogHead post={post}/>
+          <BlogBody post={post}/>
+          <AuthorBox post={post}/>
+        </React.Fragment>
+      )
+      }
+    }
   const post = extractOnePost(data.contentfulBlogPost);
-  console.log(post);
   const classes = useStyles();
   return (
     <Layout>
       <SEO title={"Blog"}/>
-      <Container className={classes.container} >
-        <BlogHead post={post}/>
-        <BlogBody post={post}/>
+      <Container className={classes.container}>
+        {renderHelper(width, post)}
+        {/*<AuthorBox post={post}/>*/}
+        {/*<BlogHead post={post}/>*/}
+        {/*<BlogBody post={post}/>*/}
       </Container>
     </Layout>
 )}

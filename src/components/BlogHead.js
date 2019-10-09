@@ -1,9 +1,8 @@
 import React from "react"
-import { makeStyles, Link, Grid, Avatar, Typography } from "@material-ui/core"
-import {Link as GLink} from 'gatsby'
+import { makeStyles, Typography } from "@material-ui/core"
 
 const BlogHead = ({post}) => {
-  const {avatar, bio, firstName, lastName, title, createdAt, timeToRead, words, name} = post;
+  const {title, createdAt, timeToRead, words} = post;
   const classes = makeStyles(theme => ({
     container: {
       width: `70%`,
@@ -32,18 +31,6 @@ const BlogHead = ({post}) => {
     postTopMeta: {
       marginBottom: `2rem`
     },
-    hiddenMdDown: {
-      [theme.breakpoints.down('md')]: {
-        position: `absolute`,
-        bottom: `4px`
-      }
-    },
-    bigAvatar: {
-      margin: 10,
-      width: 72,
-      height: 72,
-      verticalAlign: `middle`
-    },
     linkDark: {
       color: `rgba(0,0,0,.8)`,
       textDecoration: `none`
@@ -68,13 +55,6 @@ const BlogHead = ({post}) => {
       userSelect: `none`,
       border: `1px solid transparent`
     },
-    authorDescription: {
-      marginBottom: 5,
-      marginTop: 5,
-      fontSize: `0.95rem`,
-      color: `rgba(0,0,0,.44)`,
-      display: `block!important`
-    },
     postTitle: {
       fontWeight: 700,
       marginBottom: `1rem`,
@@ -98,21 +78,6 @@ const BlogHead = ({post}) => {
 
   return (
     <div className={`${classes.mainHeading}`}>
-      <Grid container className={`${classes.postTopMeta} ${classes.hiddenMdDown}`}>
-        <Grid item md={2} xs={12}>
-          <GLink to={`/user/${name}/`}>
-            <Avatar alt={`${firstName} ${lastName}`} src={avatar} className={classes.bigAvatar}/>
-          </GLink>
-        </Grid>
-        <Grid item md={10} xs={12}>
-          <GLink className={`${classes.linkDark} ${classes.textCapitalize}`} to={`/user/${name}/`}>
-            {firstName} {lastName} <span className={classes.btn}>Follow</span>
-          </GLink>
-          <span className={classes.authorDescription}>
-            {bio}
-          </span>
-        </Grid>
-      </Grid>
       <Typography variant={"h3"} className={classes.postTitle}>
         {title}
       </Typography>
