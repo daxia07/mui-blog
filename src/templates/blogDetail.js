@@ -38,9 +38,6 @@ const BlogDetail = ({data}) => {
       <SEO title={"Blog"}/>
       <Container className={classes.container}>
         {renderHelper(width, post)}
-        {/*<AuthorBox post={post}/>*/}
-        {/*<BlogHead post={post}/>*/}
-        {/*<BlogBody post={post}/>*/}
       </Container>
     </Layout>
 )}

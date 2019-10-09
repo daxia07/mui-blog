@@ -2,6 +2,7 @@ import React from "react"
 import { makeStyles } from "@material-ui/core"
 import ReactMarkdown from 'markdown-to-jsx'
 import {Link as GLink} from 'gatsby'
+import BlogTags from "./BlogTags"
 
 
 const BlogBody = ({post}) => {
@@ -56,8 +57,8 @@ const BlogBody = ({post}) => {
           {body}
         </ReactMarkdown>
       </article>
+      <BlogTags tags={tags}/>
       </div>
-
     </React.Fragment>
   )
 }
