@@ -57,6 +57,7 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
   console.log(posts);
   console.log('#################### start');
   const categories = _.chain(posts).map(e => e.node.category).uniq().value();
+  const users = _.chain(posts).map(e => e.node.author.name).uniq().value();
   console.log(categories);
   posts.forEach(({ node }, index) => {
     createPage({
@@ -69,7 +70,7 @@ exports.createPages = async ({ graphql, actions, reporter}) => {
     if (cat) {
       createPage({
         path: `category/${cat}/`,
-        component: path.resolve('./src/templates/category.js'),
+        component: path.resolve('./src/templates/categoryPosts.js'),
         context: {category: cat}
       })
     }

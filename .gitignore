@@ -68,3 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 /.contentful.json
+/package-lock.json
+
+/.idea/dictionaries/daxia.xml

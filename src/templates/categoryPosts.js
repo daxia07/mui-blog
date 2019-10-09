@@ -1,34 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { extractOtherPosts } from "../utils/extractor"
-import Layout from "../layouts/layout"
-import SEO from "../components/seo"
-import { Container, Divider, Typography } from "@material-ui/core"
-import useStyles from "../styles/style"
-import BlogCard from "../components/BlogCard"
+import BlogListView from "../layouts/BlogListView"
 
 const CategoryPage = ({data}) => {
   const {categoryPosts} = data;
   const posts = extractOtherPosts(categoryPosts.edges);
-  let url = window.location.pathname;
-  if (url[url.length-1] === `/`) {
-    url = url.slice(0, url.length-1);
-  }
-  const cat = url.substr(url.lastIndexOf('/') + 1);
   return (
-    <Layout>
-      <SEO title={`Category: ${cat.toUpperCase()}`}/>
-      <Container container spacing={5} className={useStyles().container}>
-          <Typography variant="h6" gutterBottom>
-            {posts.length} Articles found in Category: {cat.toUpperCase()}
-          </Typography>
-          {posts.map((post,index) => (
-            <div>
-              <BlogCard post={post}  key={index}/>
-              {index!==(posts.length-1) ? <Divider/> : null}
-            </div>))}
-      </Container>
-    </Layout>
+    <BlogListView posts={posts}/>
   )
 }
 
