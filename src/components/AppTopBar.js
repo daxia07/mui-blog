@@ -96,6 +96,11 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    [theme.breakpoints.down("md")]: {
+      width: `100%`,
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
   },
   contentShift: {
     transition: theme.transitions.create("margin", {

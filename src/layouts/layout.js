@@ -9,6 +9,7 @@ import NavBar from "./NavBar"
 import useWindowDimensions from "../utils/windowDimensions"
 import AppTopBar from "../components/AppTopBar"
 import { SECTIONS as sections } from "../assets/constants"
+import useStyles from "../styles/style"
 
 
 const Layout = ({ children }) => {
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
       }
   `)
   const { width } = useWindowDimensions()
+  const classes = useStyles()
   const renderHelper = (windowWidth) => {
     if (windowWidth > 960) {
       return (
@@ -45,7 +47,7 @@ const Layout = ({ children }) => {
   return (
     <React.Fragment>
       <CssBaseline/>
-      <Container>
+      <Container className={classes.container}>
         {renderHelper(width)}
       </Container>
       <Footer/>

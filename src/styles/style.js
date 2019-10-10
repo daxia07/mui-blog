@@ -100,7 +100,10 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 15,
     marginTop: 30,
     [theme.breakpoints.down("md")]: {
-      width: `90%`,
+      width: `95%`,
+      paddingLeft: 0,
+      paddingRight: 0,
+      marginTop: 0,
     },
   },
   blogContainer: {
