@@ -5,9 +5,33 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import SearchIcon from "@material-ui/icons/Search"
-import useStyles from "../styles/style"
+// import useStyles from "../styles/style"
+import { makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
 import { capitalize } from "../utils/stringUtils"
+
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    paddingLeft: `24px`,
+    paddingRight: `24px`,
+    display: `flex`,
+    position: `relative`,
+    alignItems: `center`,
+    minHeight: `64px`,
+  },
+  toolbarTitle: {
+    flex: 1,
+  },
+  toolbarSecondary: {
+    justifyContent: "space-between",
+    overflowX: "auto",
+  },
+  toolbarLink: {
+    padding: theme.spacing(1),
+    flexShrink: 0,
+  },
+}))
 
 
 const Header = ({ siteTitle }) => {
@@ -24,7 +48,8 @@ const Header = ({ siteTitle }) => {
         noWrap
         className={classes.toolbarTitle}
       >
-        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>{capitalize(title)}</Link>
+        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+          {capitalize(title)}</Link>
       </Typography>
       <IconButton>
         <SearchIcon/>
