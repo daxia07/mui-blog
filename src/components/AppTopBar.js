@@ -33,6 +33,7 @@ import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import SearchIcon from "@material-ui/icons/Search"
 import InputBase from "@material-ui/core/InputBase"
+import SearchBar from "./SearchBar"
 
 
 const catIcons = [
@@ -184,19 +185,7 @@ const AppTopBar = ({ siteTitle, main }) => {
           <Typography variant="h6" noWrap>
             {capitalize(title)}
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon/>
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+          <SearchBar/>
         </Toolbar>
       </AppBar>
       <Drawer

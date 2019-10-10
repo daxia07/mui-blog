@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: `auto`,
     paddingRight: 15,
     paddingLeft: 15,
-    marginTop: 30,
+    marginTop: 5,
     [theme.breakpoints.down("md")]: {
       width: `95%`,
       paddingLeft: 0,

@@ -13,16 +13,16 @@ import { useStaticQuery, graphql } from "gatsby"
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
     graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+        query {
+            site {
+                siteMetadata {
+                    title
+                    description
+                    author
+                }
+            }
         }
-      }
-    `
+    `,
   )
 
   const metaDescription = description || site.siteMetadata.description
@@ -40,13 +40,18 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
-          name:`viewport`,
-          content: `minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no`
-        }
+          name: `viewport`,
+          content: `minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no`,
+        },
+        {
+          name: "theme-color",
+          content: "#3f51b5",
+        },
+
       ].concat(meta)}
     >
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 
     </Helmet>
   )
