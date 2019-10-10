@@ -1,30 +1,52 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
 import { CssBaseline } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import NavBar from "./NavBar"
+import useWindowDimensions from "../utils/windowDimensions"
+import AppTopBar from "../components/AppTopBar"
+import { SECTIONS as sections } from "../assets/constants"
+
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
+      query SiteTitleQuery {
+          site {
+              siteMetadata {
+                  title
+              }
+          }
       }
-    }
   `)
+  const { width } = useWindowDimensions()
+  const renderHelper = (windowWidth) => {
+    if (windowWidth > 960) {
+      return (
+        <React.Fragment>
+          <Header siteTitle={data.site.siteMetadata.title}/>
+          <NavBar sections={sections}/>
+          <main>{children}</main>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <AppTopBar siteTitle={data.site.siteMetadata.title}
+                     main={children}
+          />
+        </React.Fragment>
+      )
+    }
+  }
 
   return (
     <React.Fragment>
       <CssBaseline/>
       <Container>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <NavBar/>
-        <main>{children}</main>
+        {renderHelper(width)}
       </Container>
       <Footer/>
     </React.Fragment>

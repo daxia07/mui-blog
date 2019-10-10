@@ -1,10 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
-import BlogBriefCard from "../components/BlogBriefCard"
 import { extractOtherPosts } from "../utils/extractor"
-
+import BlogBriefCard from "../components/BlogBriefCard"
 
 export const query = graphql`
     query BlogQuery {

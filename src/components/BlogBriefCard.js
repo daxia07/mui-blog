@@ -21,7 +21,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles"
 
 const useStyles = makeStyles(theme => ({
   card: {
-    // maxWidth: 345,
+    // maxWidth: 550,
     width: `100%`,
     boxShadow: `none`,
     borderRadius: `5px 5px 0 0`,

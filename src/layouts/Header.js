@@ -6,22 +6,13 @@ import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import SearchIcon from "@material-ui/icons/Search"
 import useStyles from "../styles/style"
-import {Link} from 'gatsby'
-
-
-const capitalize = str => {
-  const str_list = str.split(" ");
-  let ret_str = ""
-  str_list.forEach((subStr) => {
-    ret_str += subStr.charAt(0).toUpperCase() + subStr.slice(1) + " ";
-  })
-  return ret_str
-}
+import { Link } from "gatsby"
+import { capitalize } from "../utils/stringUtils"
 
 
 const Header = ({ siteTitle }) => {
-  const classes = useStyles();
-  const title = siteTitle.replace("-", " ");
+  const classes = useStyles()
+  const title = siteTitle.replace("-", " ")
   return (
     <Toolbar className={classes.toolbar}>
       <Button size="small">Subscribe</Button>
@@ -33,16 +24,17 @@ const Header = ({ siteTitle }) => {
         noWrap
         className={classes.toolbarTitle}
       >
-        <Link to={"/"} style={{textDecoration: 'none', color: 'black'}}>{capitalize(title)}</Link>
+        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>{capitalize(title)}</Link>
       </Typography>
       <IconButton>
-        <SearchIcon />
+        <SearchIcon/>
       </IconButton>
       <Button variant="outlined" size="small">
         Sign up
       </Button>
     </Toolbar>
-)}
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
