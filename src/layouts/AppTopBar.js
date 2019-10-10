@@ -28,12 +28,10 @@ import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff"
 import InfoIcon from "@material-ui/icons/Info"
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks"
 import DesktopMacIcon from "@material-ui/icons/DesktopMac"
-import Link from "./Link"
+import Link from "../components/Link"
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
-import SearchIcon from "@material-ui/icons/Search"
-import InputBase from "@material-ui/core/InputBase"
-import SearchBar from "./SearchBar"
+import SearchBar from "../components/SearchBar"
 
 
 const catIcons = [

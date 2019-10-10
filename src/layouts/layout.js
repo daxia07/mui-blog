@@ -7,7 +7,7 @@ import { CssBaseline } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import NavBar from "./NavBar"
 import useWindowDimensions from "../utils/windowDimensions"
-import AppTopBar from "../components/AppTopBar"
+import AppTopBar from "./AppTopBar"
 import { SECTIONS as sections } from "../assets/constants"
 import useStyles from "../styles/style"
 

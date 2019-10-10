@@ -3,8 +3,7 @@ let contentfulConfig
 try {
   // Load the Contentful config from the .contentful.json
   contentfulConfig = require("./.contentful")
-} catch (_) {
-}
+} catch (_) {}
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
@@ -12,7 +11,10 @@ contentfulConfig = {
   accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
 }
 
-const { spaceId, accessToken } = contentfulConfig
+const {
+  spaceId,
+  accessToken
+} = contentfulConfig
 
 if (!spaceId || !accessToken) {
   throw new Error(
@@ -72,17 +74,15 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 590,
-            },
+        plugins: [{
+          resolve: `gatsby-remark-images`,
+          options: {
+            // It's important to specify the maxWidth (in pixels) of
+            // the content container as this plugin uses this as the
+            // base for generating different widths of each image.
+            maxWidth: 590,
           },
-        ],
+        }, ],
       },
     },
     {
@@ -95,6 +95,27 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/pw-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `tags`, `author`, `description`],
+        // How to resolve each field`s value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields` values
+          ContentfulBlogPost: {
+            title: node => node.title,
+            tags: node => node.tags,
+            userName: (node, getNode) => getNode(node.author___NODE).name,
+            fullName: (node, getNode) => `${getNode(node.author___NODE).firstName} ${getNode(node.author___NODE).lastName}`,
+            description: (node, getNode) => getNode(node.description___NODE).description
+          },
+        },
+        // Optional filter to limit indexed nodes
+        // filter: (node, getNode) =>
+        //   node.frontmatter.tags !== "exempt",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

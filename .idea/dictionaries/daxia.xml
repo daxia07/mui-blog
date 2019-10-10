@@ -2,6 +2,7 @@
   <dictionary name="daxia">
     <words>
       <w>clsx</w>
+      <w>elasticlunr</w>
       <w>numero</w>
       <w>slugify</w>
     </words>
