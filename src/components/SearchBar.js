@@ -66,13 +66,9 @@ const SearchBar = () => {
     const query = evt.target.value
     setQuery(query)
     index = getOrCreateIndex()
-    console.log(index)
-    console.log(index.search)
-    setResult(index.search(query, {}))
+    setResult(index.search(query, { expand: true })
+      .map(({ ref }) => index.documentStore.getDoc(ref)))
     console.log(result)
-    result.map(
-      ({ ref }) => index.documentStore.getDoc(ref),
-    )
   }
   return (
     <div className={classes.search} style={{ fontSize: `1rem` }}>
@@ -91,14 +87,14 @@ const SearchBar = () => {
         margin="dense"
         style={{ float: `right` }}
       />
-      {/* <ul>
+      <ul>
         {result.map(page => (
           <li key={page.id}>
             <Link to={"/" + page.path}>{page.title}</Link>
             {": " + page.tags.join(`,`)}
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   )
 }

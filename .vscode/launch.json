@@ -8,6 +8,9 @@
       "request": "launch",
       "url": "http://localhost:8000",
       "webRoot": "${workspaceRoot}/src",
+      "sourceMaps": true,
+      "breakOnLoad": true,
+      "breakOnLoadStrategy": "instrument",
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }

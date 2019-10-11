@@ -3,7 +3,8 @@ let contentfulConfig
 try {
   // Load the Contentful config from the .contentful.json
   contentfulConfig = require("./.contentful")
-} catch (_) {}
+} catch (_) {
+}
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
@@ -13,7 +14,7 @@ contentfulConfig = {
 
 const {
   spaceId,
-  accessToken
+  accessToken,
 } = contentfulConfig
 
 if (!spaceId || !accessToken) {
@@ -82,7 +83,7 @@ module.exports = {
             // base for generating different widths of each image.
             maxWidth: 590,
           },
-        }, ],
+        }],
       },
     },
     {
@@ -101,7 +102,7 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: [`title`, `tags`, `author`, `description`],
+        fields: [`title`, `tags`, `userName`, `fullName`, `description`],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
@@ -110,7 +111,7 @@ module.exports = {
             tags: node => node.tags,
             userName: (node, getNode) => getNode(node.author___NODE).name,
             fullName: (node, getNode) => `${getNode(node.author___NODE).firstName} ${getNode(node.author___NODE).lastName}`,
-            description: (node, getNode) => getNode(node.description___NODE).description
+            description: (node, getNode) => getNode(node.description___NODE).description,
           },
         },
         // Optional filter to limit indexed nodes
