@@ -70,6 +70,9 @@ const useStyles = makeStyles(theme => ({
   divider: {
     height: theme.spacing(2),
   },
+  resultPanel: {
+    marginTop: 38,
+  },
 }))
 
 const SearchBar = () => {
@@ -136,7 +139,7 @@ const SearchBar = () => {
           fontWeight: isSelected ? 500 : 400,
         }}
       >
-        {page.title}
+        <Link to={`/blog/${page.slug}/`}>{page.title}</Link>
       </MenuItem>
     )
   }
@@ -175,8 +178,8 @@ const SearchBar = () => {
                 })}
 
                 <div {...getMenuProps()}>
-                  {isOpen ? (
-                    <Paper className={classes.paper} square>
+                  {!isOpen ? (
+                    <Paper className={classes.paper} square style={{ marginTop: 38 }}>
                       {result.map((page, index) =>
                         renderResult({
                           page,

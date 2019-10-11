@@ -102,7 +102,7 @@ module.exports = {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: [`title`, `tags`, `userName`, `fullName`, `description`],
+        fields: [`title`, `tags`, `userName`, `fullName`, `description`, `slug`],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
@@ -112,6 +112,7 @@ module.exports = {
             userName: (node, getNode) => getNode(node.author___NODE).name,
             fullName: (node, getNode) => `${getNode(node.author___NODE).firstName} ${getNode(node.author___NODE).lastName}`,
             description: (node, getNode) => getNode(node.description___NODE).description,
+            slug: node => node.fields.slug,
           },
         },
         // Optional filter to limit indexed nodes
