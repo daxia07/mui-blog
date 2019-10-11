@@ -11,3 +11,6 @@
 2. SPA with react with react router
 3. CRUD and update timely
 4. Next.js
+
+## Gatsby debug command
+node --nolazy --inspect-brk node_modules/.bin/gatsby develop

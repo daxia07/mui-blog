@@ -1,5 +1,4 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
-import { b } from "@material-ui/core/colors"
 
 let siteTheme = createMuiTheme({
   palette: {

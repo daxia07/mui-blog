@@ -31,7 +31,6 @@ const Layout = ({ children, classPrefix }) => {
   const { width } = useWindowDimensions()
   const classes = useStyles()
   const theme = useTheme()
-  console.log(theme)
   const renderHelper = (windowWidth) => {
     if (windowWidth > theme.breakpoints.values["md"]) {
       return (

@@ -1,8 +1,12 @@
+import React, { useState } from "react"
 import SearchIcon from "@material-ui/icons/Search"
 import InputBase from "@material-ui/core/InputBase"
-import React from "react"
 import { makeStyles } from "@material-ui/core"
 import { fade } from "@material-ui/core/styles"
+import { useStaticQuery, graphql } from "gatsby"
+import { Index } from "elasticlunr"
+import Link from "./Link"
+
 
 const useStyles = makeStyles(theme => ({
   search: {
@@ -46,8 +50,32 @@ const useStyles = makeStyles(theme => ({
 
 const SearchBar = () => {
   const classes = useStyles()
+  const data = useStaticQuery(graphql`
+      query SearchIndexQuery {
+          siteSearchIndex {
+              index
+          }
+      }
+  `)
+  let index
+  const searchIndex = data.siteSearchIndex.index
+  const [query, setQuery] = useState("")
+  const [result, setResult] = useState([])
+  const getOrCreateIndex = () => index ? index : Index.load(searchIndex)
+  const search = evt => {
+    const query = evt.target.value
+    setQuery(query)
+    index = getOrCreateIndex()
+    console.log(index)
+    console.log(index.search)
+    setResult(index.search(query, {}))
+    console.log(result)
+    result.map(
+      ({ ref }) => index.documentStore.getDoc(ref),
+    )
+  }
   return (
-    <div className={classes.search}>
+    <div className={classes.search} style={{ fontSize: `1rem` }}>
       <div className={classes.searchIcon}>
         <SearchIcon/>
       </div>
@@ -58,7 +86,19 @@ const SearchBar = () => {
           input: classes.inputInput,
         }}
         inputProps={{ "aria-label": "search" }}
+        value={query}
+        onChange={search}
+        margin="dense"
+        style={{ float: `right` }}
       />
+      {/* <ul>
+        {result.map(page => (
+          <li key={page.id}>
+            <Link to={"/" + page.path}>{page.title}</Link>
+            {": " + page.tags.join(`,`)}
+          </li>
+        ))}
+      </ul> */}
     </div>
   )
 }
