@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 import { extractOtherPosts } from "../utils/extractor"
 import BlogBriefCard from "../components/BlogBriefCard"
 import { graphql } from "gatsby"
+import { Button } from "@material-ui/core"
 
 export const query = graphql`
     query BlogQuery {
@@ -18,11 +19,16 @@ export const query = graphql`
 `
 
 const BlogPage = ({ data }) => {
-  console.log(data)
   const posts = extractOtherPosts(data.blogCard.edges)
   return (
-    <Layout>
+    <Layout classPrefix='bgp'>
       <SEO title="Blog"/>
+      <Button color="primary">
+        Primary
+      </Button>
+      <Button color="secondary">
+        Secondary
+      </Button>
       <BlogBriefCard post={posts[0]}/>
     </Layout>
   )

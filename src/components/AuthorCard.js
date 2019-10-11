@@ -13,11 +13,16 @@ const useStyles = makeStyles(theme => ({
     boxShadow: `none`,
     borderRadius: `5px 5px 0 0`,
     marginTop: 15,
+    backgroundColor: `rgba(0, 0, 0, 0)`,
   },
   avatar: {
     marginLeft: 20,
     width: 72,
     height: 72,
+    [theme.breakpoints.down("sm")]: {
+      width: 50,
+      height: 50,
+    },
   },
   link: {
     textDecoration: "none",
@@ -48,16 +53,12 @@ export default function AuthorCard({ post }) {
   } = post
   const classes = useStyles()
   return (
-    <Card className={classes.card} style={{ backgroundColor: `rgba(0, 0, 0, 0)` }}>
+    <Card className={classes.card}>
       <CardHeader
         avatar={
           <Link to={`/user/${name}/`}>
-            <Avatar aria-label="author"
-                    style={{
-                      marginLeft: 20,
-                      width: 72,
-                      height: 72,
-                    }} alt={name} src={avatar}/>
+            <Avatar aria-label="author" src={avatar}
+                    className={classes.avatar}/>
           </Link>
         }
         title={

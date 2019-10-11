@@ -3,16 +3,21 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 import Header from "./Header"
 import Footer from "./Footer"
-import { CssBaseline } from "@material-ui/core"
+import { createGenerateClassName, CssBaseline } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import NavBar from "./NavBar"
 import useWindowDimensions from "../utils/windowDimensions"
 import AppTopBar from "./AppTopBar"
 import { SECTIONS as sections } from "../assets/constants"
 import useStyles from "../styles/style"
+import siteTheme from "../assets/siteTheme"
+import { ThemeProvider } from "@material-ui/styles"
+import { JssProvider } from "react-jss"
 
-
-const Layout = ({ children }) => {
+const Layout = ({ children, classPrefix }) => {
+  const generateClassName = createGenerateClassName({
+    productionPrefix: classPrefix,
+  })
   const data = useStaticQuery(graphql`
       query SiteTitleQuery {
           site {
@@ -36,22 +41,24 @@ const Layout = ({ children }) => {
     } else {
       return (
         <React.Fragment>
-          <AppTopBar siteTitle={data.site.siteMetadata.title}
-                     main={children}
-          />
+          <AppTopBar siteTitle={data.site.siteMetadata.title} main={children}/>
         </React.Fragment>
       )
     }
   }
 
   return (
-    <React.Fragment>
-      <CssBaseline/>
-      <Container className={classes.container}>
-        {renderHelper(width)}
-      </Container>
-      <Footer/>
-    </React.Fragment>
+    <JssProvider generateClassName={generateClassName}>
+      <ThemeProvider theme={siteTheme}>
+        <React.Fragment>
+          <CssBaseline/>
+          <Container className={classes.container}>
+            {renderHelper(width)}
+          </Container>
+          <Footer/>
+        </React.Fragment>
+      </ThemeProvider>
+    </JssProvider>
   )
 }
 

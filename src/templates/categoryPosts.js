@@ -8,7 +8,7 @@ const CategoryPage = ({ data }) => {
   const { categoryPosts } = data
   const posts = extractOtherPosts(categoryPosts.edges)
   return (
-    <BlogListView posts={posts}/>
+    <BlogListView posts={posts} classPrefix="catp"/>
   )
 }
 

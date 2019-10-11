@@ -5,9 +5,10 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import { makeStyles } from "@material-ui/core"
-import { Link } from "gatsby"
+import Link from "../components/Link"
 import { capitalize } from "../utils/stringUtils"
 import SearchBar from "../components/SearchBar"
+
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -47,7 +48,7 @@ const Header = ({ siteTitle }) => {
         noWrap
         className={classes.toolbarTitle}
       >
-        <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <Link to={"/"} style={{ color: "black" }}>
           {capitalize(title)}</Link>
       </Typography>
       <IconButton>

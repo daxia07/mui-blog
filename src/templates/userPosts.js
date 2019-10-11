@@ -8,7 +8,7 @@ const UserPostsPage = ({ data }) => {
   const { userPosts } = data
   const posts = extractOtherPosts(userPosts.edges)
   return (
-    <BlogListView posts={posts}/>
+    <BlogListView posts={posts} classPrefix="userp"/>
   )
 }
 

@@ -5,7 +5,7 @@ import { Container, Divider, Typography } from "@material-ui/core"
 import useStyles from "../styles/style"
 import BlogBriefCard from "../components/BlogBriefCard"
 
-const BlogListView = ({ posts }) => {
+const BlogListView = ({ posts, classPrefix }) => {
   let url = ""
   if (typeof window !== "undefined") {
     url = window.location.pathname
@@ -19,7 +19,7 @@ const BlogListView = ({ posts }) => {
   const subPath = url.split("/")[0]
   const endpoint = url.substr(url.lastIndexOf("/") + 1)
   return (
-    <Layout>
+    <Layout classPrefix={classPrefix}>
       <SEO title={`${subPath.charAt(0).toUpperCase() + subPath.slice(1)}: 
       ${endpoint.toUpperCase()}`}/>
       <Container container spacing={5} className={useStyles().container}>

@@ -2,7 +2,7 @@ import React from "react"
 import { Paper } from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
-import { Link as GLink } from "gatsby"
+import Link from "./Link"
 import useStyles from "../styles/style"
 
 const FeaturedPost = ({ post }) => {
@@ -21,11 +21,11 @@ const FeaturedPost = ({ post }) => {
             <Typography variant="h5" paragraph style={{ color: "white" }}>
               {description}
             </Typography>
-            <GLink to={`blog/${slug}/`} className={classes.featureLink} style={{ textDecoration: "none" }}>
+            <Link to={`blog/${slug}/`} className={classes.featureLink}>
               <Typography variant="subtitle1" paragraph className={classes.readMore} color="primary">
                 Continue reading...
               </Typography>
-            </GLink>
+            </Link>
           </div>
         </Grid>
       </Grid>

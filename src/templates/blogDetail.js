@@ -34,7 +34,7 @@ const BlogDetail = ({ data }) => {
   const post = extractOnePost(data.contentfulBlogPost)
   const classes = useStyles()
   return (
-    <Layout>
+    <Layout classPrefix={"bdtl"}>
       <SEO title={"Blog"}/>
       <Container className={classes.container}>
         {renderHelper(width, post)}

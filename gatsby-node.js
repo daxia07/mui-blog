@@ -54,7 +54,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild("Error: loading create page query")
   }
   const posts = result.data.allContentfulBlogPost.edges
-  console.log("#################### start")
   const categories = _.chain(posts).map(e => e.node.category).uniq().value()
   const users = _.chain(posts).map(e => e.node.author.name).uniq().value()
   let tagList = []

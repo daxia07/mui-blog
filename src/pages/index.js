@@ -1,15 +1,14 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import FeaturedPost from "../components/FeaturedPost"
 import SubFeaturedPost from "../components/SubFeaturedPost"
 import PostsView from "../components/PostsView"
-import {extractFeaturedPost, extractSubFeaturedPost, extractOtherPosts} from "../utils/extractor"
+import { extractFeaturedPost, extractSubFeaturedPost, extractOtherPosts } from "../utils/extractor"
 import { Grid } from "@material-ui/core"
 import Sidebar from "../layouts/Sidebar"
 import useStyles from "../styles/style"
-import { StylesProvider, createGenerateClassName } from '@material-ui/styles'
 
 
 export const query = graphql`
@@ -50,25 +49,21 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }) => {
-  const generateClassName = createGenerateClassName({
-    productionPrefix: 'ixp'
-  });
-  const {featured, otherPosts, subFeatured, topTrends} = data;
-  const featuredPost = extractFeaturedPost(featured.edges[0].node);
-  const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges);
-  const posts = extractOtherPosts(otherPosts.edges);
+  const { featured, otherPosts, subFeatured, topTrends } = data
+  const featuredPost = extractFeaturedPost(featured.edges[0].node)
+  const subFeaturedPost = extractSubFeaturedPost(subFeatured.edges)
+  const posts = extractOtherPosts(otherPosts.edges)
   return (
-  <Layout>
-    <SEO title="Home" />
-    <StylesProvider generateClassName={generateClassName}>
+    <Layout classPrefix="idx">
+      <SEO title="Home"/>
       <FeaturedPost post={featuredPost}/>
       <SubFeaturedPost posts={subFeaturedPost}/>
       <Grid container spacing={5} className={useStyles().mainGrid}>
-        <PostsView posts={posts} />
+        <PostsView posts={posts}/>
         <Sidebar topTrends={topTrends.edges}/>
       </Grid>
-    </StylesProvider>
-  </Layout>
-)}
+    </Layout>
+  )
+}
 
 export default IndexPage

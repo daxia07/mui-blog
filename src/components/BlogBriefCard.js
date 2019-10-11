@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     width: `100%`,
     boxShadow: `none`,
     borderRadius: `5px 5px 0 0`,
-    // marginTop: 15,
+    marginTop: 15,
   },
   bbMedia: {
     height: 0,
@@ -46,6 +46,10 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 20,
     width: 72,
     height: 72,
+    [theme.breakpoints.down("sm")]: {
+      width: 50,
+      height: 50,
+    },
   },
   link: {
     textDecoration: "none",
@@ -117,16 +121,11 @@ export default function BlogBriefCard({ post }) {
   }
 
   return (
-    <Card className={classes.card} style={{ marginTop: 15 }}>
+    <Card className={classes.card}>
       <CardHeader
         avatar={
           <Link to={`/user/${name}/`}>
-            <Avatar aria-label="author"
-                    style={{
-                      marginLeft: 20,
-                      width: 72,
-                      height: 72,
-                    }} alt={name} src={avatar}/>
+            <Avatar aria-label="author" alt={name} src={avatar} className={classes.avatar}/>
           </Link>
         }
         action={
@@ -142,10 +141,9 @@ export default function BlogBriefCard({ post }) {
         subheader={`created by ${firstName} ${lastName} @ ${createdAt}`}
       />
       <CardMedia
-        style={{ height: 0, paddingTop: "56.25%" }}
+        className={classes.bbMedia}
         image={imgUrl}
         title="hero image"
-        // style={{ backgroundImage: imgUrl }}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -184,12 +182,12 @@ export default function BlogBriefCard({ post }) {
           <div className={classes.blogFooter}>
             <ul>
               <li className={classes.publishedDate} style={{ display: `none` }}>{createdAt}</li>
-              <li className={classes.comments}><a href="#" style={{ textDecoration: `none` }}>
+              <li className={classes.comments}><Link to="#">
                 <ChatBubbleOutlineRoundedIcon className={classes.icons}/>
-                <span className={classes.numero}>4</span></a></li>
-              <li className="shares"><a href="#" style={{ textDecoration: `none` }}>
+                <span className={classes.numero}>4</span></Link></li>
+              <li className="shares"><Link to="#">
                 <StarBorderRoundedIcon className={classes.icons}/>
-                <span className={classes.numero}>1</span></a></li>
+                <span className={classes.numero}>1</span></Link></li>
             </ul>
           </div>
         </CardContent>
