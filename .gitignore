@@ -70,4 +70,4 @@ yarn-error.log
 /.contentful.json
 /package-lock.json
 
-/.idea/dictionaries/daxia.xml
+.idea/
