@@ -18,6 +18,7 @@ export const query = graphql`
     }
 `
 
+
 const BlogPage = ({ data }) => {
   const posts = extractOtherPosts(data.blogCard.edges)
   return (
