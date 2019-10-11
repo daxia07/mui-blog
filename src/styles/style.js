@@ -100,6 +100,12 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 15,
     marginTop: 5,
     [theme.breakpoints.down("sm")]: {
+      width: `70%`,
+      paddingLeft: 0,
+      paddingRight: 0,
+      marginTop: 0,
+    },
+    [theme.breakpoints.down("xs")]: {
       width: `95%`,
       paddingLeft: 0,
       paddingRight: 0,

@@ -95,8 +95,13 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
-    [theme.breakpoints.down("md")]: {
-      width: `100%`,
+    [theme.breakpoints.down("sm")]: {
+      width: `90%`,
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: `70%`,
       paddingLeft: 0,
       paddingRight: 0,
     },

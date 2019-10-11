@@ -13,6 +13,7 @@ import useStyles from "../styles/style"
 import siteTheme from "../assets/siteTheme"
 import { ThemeProvider } from "@material-ui/styles"
 import { JssProvider } from "react-jss"
+import { useTheme } from "@material-ui/core"
 
 const Layout = ({ children, classPrefix }) => {
   const generateClassName = createGenerateClassName({
@@ -29,8 +30,10 @@ const Layout = ({ children, classPrefix }) => {
   `)
   const { width } = useWindowDimensions()
   const classes = useStyles()
+  const theme = useTheme()
+  console.log(theme)
   const renderHelper = (windowWidth) => {
-    if (windowWidth > 960) {
+    if (windowWidth > theme.breakpoints.values["md"]) {
       return (
         <React.Fragment>
           <Header siteTitle={data.site.siteMetadata.title}/>

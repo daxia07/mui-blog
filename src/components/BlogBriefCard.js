@@ -31,6 +31,12 @@ const useStyles = makeStyles(theme => ({
     height: 0,
     paddingTop: "56.25%", // 16:9
     // margin: "-70px auto 0",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "40%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "30%",
+    },
   },
   expand: {
     transform: "rotate(0deg)",
