@@ -5,37 +5,22 @@ import { Container, Divider, Typography } from "@material-ui/core"
 import useStyles from "../styles/style"
 import BlogBriefCard from "../components/BlogBriefCard"
 
-const BlogListView = ({ posts, classPrefix }) => {
-  let url = ""
-  if (typeof window !== "undefined") {
-    url = window.location.pathname
-  }
-  if (url[url.length - 1] === `/`) {
-    url = url.slice(0, url.length - 1)
-  }
-  if (url[0] === `/`) {
-    url = url.slice(1, url.length)
-  }
-  const subPath = url.split("/")[0]
-  const endpoint = url.substr(url.lastIndexOf("/") + 1)
-  return (
-    <Layout classPrefix={classPrefix}>
-      <SEO title={`${subPath.charAt(0).toUpperCase() + subPath.slice(1)}: 
-      ${endpoint.toUpperCase()}`}/>
-      <Container container spacing={5} className={useStyles().container}>
-        <Typography variant="h6" gutterBottom>
-          {posts.length} {`Articles found from
-            ${subPath.charAt(0).toUpperCase() + subPath.slice(1)}:
-            ${endpoint.toUpperCase()}`}
-        </Typography>
-        {posts.map((post, index) => (
-          <div>
-            <BlogBriefCard post={post} key={index}/>
-            {index !== (posts.length - 1) ? <Divider/> : null}
-          </div>))}
-      </Container>
-    </Layout>
-  )
-}
+const BlogListView = ({ posts, classPrefix, sub }) =>
+  <Layout classPrefix={classPrefix}>
+    <SEO title={`${sub.name}: 
+      ${sub.title.toUpperCase()}`}/>
+    <Container container spacing={5} className={useStyles().container}>
+      <Typography variant="h6" gutterBottom>
+        {posts.length} {`Articles found from
+            ${sub.name}:
+            ${sub.title.toUpperCase()}`}
+      </Typography>
+      {posts.map((post, index) => (
+        <div>
+          <BlogBriefCard post={post} key={index}/>
+          {index !== (posts.length - 1) ? <Divider/> : null}
+        </div>))}
+    </Container>
+  </Layout>
 
 export default BlogListView

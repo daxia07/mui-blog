@@ -4,11 +4,12 @@ import { extractOtherPosts } from "../utils/extractor"
 import BlogListView from "../layouts/BlogListView"
 
 
-const tagPage = ({ data }) => {
+const tagPage = ({ data, pageContext: { tag } }) => {
   const { tagPosts } = data
   const posts = extractOtherPosts(tagPosts.edges)
+  const sub = { name: `Tag`, title: tag }
   return (
-    <BlogListView posts={posts} classPrefix="tagp"/>
+    <BlogListView posts={posts} classPrefix="tagp" sub={sub}/>
   )
 }
 
