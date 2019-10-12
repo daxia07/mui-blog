@@ -27,5 +27,4 @@ export const PAGES = [
 
 export const OTHERLINKS = [
   "Subscribe",
-  "Login",
 ]

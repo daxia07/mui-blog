@@ -8,6 +8,8 @@ import { makeStyles } from "@material-ui/core"
 import Link from "../components/Link"
 import { capitalize } from "../utils/stringUtils"
 import SearchBar from "../components/SearchBar"
+import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded"
+import { isAuthenticated } from "../utils/auth"
 
 
 const useStyles = makeStyles(theme => ({
@@ -54,9 +56,13 @@ const Header = ({ siteTitle }) => {
       <IconButton>
         <SearchBar/>
       </IconButton>
-      <Button variant="outlined" size="small">
-        Sign up
-      </Button>
+      <Link to={"/account/"}>
+        {isAuthenticated() ? <AccountCircleRoundedIcon/> :
+          <Button variant="outlined" size="small">
+            Sign up
+          </Button>
+        }
+      </Link>
     </Toolbar>
   )
 }

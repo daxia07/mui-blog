@@ -32,6 +32,7 @@ import Link from "../components/Link"
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import SearchBar from "../components/SearchBar"
+import { isAuthenticated } from "../utils/auth"
 
 
 const catIcons = [
@@ -44,7 +45,7 @@ const pageIcons = [
 ]
 
 const linkIcons = [
-  <SubscriptionsIcon/>, <AccountCircleIcon/>,
+  <SubscriptionsIcon/>,
 ]
 
 const drawerWidth = 240
@@ -243,6 +244,14 @@ const AppTopBar = ({ siteTitle, main }) => {
               </Link>
             </ListItem>
           ))}
+          <ListItem button key="account">
+            <ListItemIcon>
+              <AccountCircleIcon/>
+            </ListItemIcon>
+            <Link to="/account" style={{ color: `black` }}>
+              <ListItemText primary={isAuthenticated() ? "Account" : "Login"}/>
+            </Link>
+          </ListItem>
         </List>
       </Drawer>
       <main

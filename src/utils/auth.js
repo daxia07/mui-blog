@@ -5,12 +5,12 @@ const isBrowser = typeof window !== "undefined"
 
 const auth = isBrowser
   ? new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-      redirectUri: process.env.AUTH0_CALLBACK,
-      responseType: "token id_token",
-      scope: "openid profile email",
-    })
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENTID,
+    redirectUri: process.env.AUTH0_CALLBACK,
+    responseType: "token id_token",
+    scope: "openid profile email",
+  })
   : {}
 
 const tokens = {
@@ -37,7 +37,8 @@ export const login = () => {
   auth.authorize()
 }
 
-const setSession = (cb = () => {}) => (err, authResult) => {
+const setSession = (cb = () => {
+}) => (err, authResult) => {
   if (err) {
     navigate("/")
     cb()
@@ -50,8 +51,8 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.idToken = authResult.idToken
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
-    localStorage.setItem("isLoggedIn", true)
-    navigate("/account")
+    localStorage.setItem("isLoggedIn", "true")
+    // navigate("/")
     cb()
   }
 }
@@ -74,6 +75,6 @@ export const getProfile = () => {
 }
 
 export const logout = () => {
-  localStorage.setItem("isLoggedIn", false)
+  localStorage.setItem("isLoggedIn", "false")
   auth.logout()
 }
