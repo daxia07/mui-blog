@@ -10,6 +10,7 @@ import { capitalize } from "../utils/stringUtils"
 import SearchBar from "../components/SearchBar"
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded"
 import { isAuthenticated } from "../utils/auth"
+import { navigate } from "gatsby"
 
 
 const useStyles = makeStyles(theme => ({
@@ -39,6 +40,12 @@ const useStyles = makeStyles(theme => ({
 const Header = ({ siteTitle }) => {
   const classes = useStyles()
   const title = siteTitle.replace("-", " ")
+  const navToAccount = evt => {
+    evt.preventDefault()
+    navigate("/account/", {
+      state: { from: "/" },
+    })
+  }
   return (
     <Toolbar className={classes.toolbar}>
       <Button size="small">Subscribe</Button>
@@ -56,13 +63,11 @@ const Header = ({ siteTitle }) => {
       <IconButton>
         <SearchBar/>
       </IconButton>
-      <Link to={"/account/"}>
-        {isAuthenticated() ? <AccountCircleRoundedIcon/> :
-          <Button variant="outlined" size="small">
-            Sign up
-          </Button>
-        }
-      </Link>
+      {isAuthenticated() ? <AccountCircleRoundedIcon onClick={navToAccount}/> :
+        <Button variant="outlined" size="small" onClick={navToAccount}>
+          Sign up
+        </Button>
+      }
     </Toolbar>
   )
 }

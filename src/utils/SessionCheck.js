@@ -14,6 +14,7 @@ class SessionCheck extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     silentAuth(this.handleCheckSession)
   }
 

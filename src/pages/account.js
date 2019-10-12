@@ -18,7 +18,7 @@ const Account = () => {
   const user = getProfile()
 
   return (
-    <>
+    <React.Fragment>
       <nav>
         <Link to="/account">Home</Link>{" "}
         <Link to="/account/settings">Settings</Link>{" "}
@@ -34,11 +34,11 @@ const Account = () => {
         </a>
       </nav>
       <Router>
-        <Home path="/account" user={user} />
-        <Settings path="/account/settings" />
-        <Billing path="/account/billing" />
+        <Home path="/account" user={user}/>
+        <Settings path="/account/settings"/>
+        <Billing path="/account/billing"/>
       </Router>
-    </>
+    </React.Fragment>
   )
 }
 
