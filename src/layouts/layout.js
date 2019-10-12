@@ -10,8 +10,6 @@ import useWindowDimensions from "../utils/windowDimensions"
 import AppTopBar from "./AppTopBar"
 import { SECTIONS as sections } from "../assets/constants"
 import useStyles from "../styles/style"
-import siteTheme from "../assets/siteTheme"
-import { ThemeProvider } from "@material-ui/styles"
 import { JssProvider } from "react-jss"
 import { useTheme } from "@material-ui/core"
 
@@ -51,15 +49,13 @@ const Layout = ({ children, classPrefix }) => {
 
   return (
     <JssProvider generateClassName={generateClassName}>
-      <ThemeProvider theme={siteTheme}>
-        <React.Fragment>
-          <CssBaseline/>
-          <Container className={classes.container}>
-            {renderHelper(width)}
-          </Container>
-          <Footer/>
-        </React.Fragment>
-      </ThemeProvider>
+      <React.Fragment>
+        <CssBaseline/>
+        <Container className={classes.container}>
+          {renderHelper(width)}
+        </Container>
+        <Footer/>
+      </React.Fragment>
     </JssProvider>
   )
 }
