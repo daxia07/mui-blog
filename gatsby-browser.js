@@ -5,7 +5,7 @@ import { create } from "jss"
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <StylesProvider ss={create({
+    <StylesProvider jss={create({
       ...jssPreset(),
       insertionPoint: `mui-inject-first`,
     })} injectFirst>
