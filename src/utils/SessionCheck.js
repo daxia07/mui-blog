@@ -1,4 +1,5 @@
 import React from "react"
+import { silentAuth } from "./auth"
 
 class SessionCheck extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class SessionCheck extends React.Component {
   }
 
   componentDidMount() {
+    silentAuth(this.handleCheckSession)
   }
 
   render() {

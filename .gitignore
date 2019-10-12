@@ -71,4 +71,5 @@ yarn-error.log
 /package-lock.json
 
 .idea/
-!/.env.development
+.env.development
+.env.production

@@ -28,6 +28,18 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 }
 
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path.match(/^\/account/)) {
+    page.matchPath = "/account/*"
+    // Update the page.
+    createPage(page)
+  }
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const result = await graphql(`
@@ -97,12 +109,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage, actions, loaders }) => {
   const config = getConfig()
   if (stage.startsWith("develop") && config.resolve) {
     config.resolve.alias = {
       ...config.resolve.alias,
       "react-dom": "@hot-loader/react-dom",
     }
+  }
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /auth0-js/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
   }
 }
