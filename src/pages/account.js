@@ -16,6 +16,7 @@ const Account = () => {
   }
 
   const user = getProfile()
+  console.log(user)
 
   return (
     <React.Fragment>

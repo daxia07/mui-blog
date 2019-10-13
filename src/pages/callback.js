@@ -3,8 +3,7 @@ import { handleAuthentication } from "../utils/auth"
 import { navigate } from "gatsby"
 
 
-const Callback = (props) => {
-  console.log(props)
+const Callback = () => {
   handleAuthentication()
   navigate("/")
   return <p>Loading...</p>
