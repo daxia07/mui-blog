@@ -8,7 +8,7 @@ import EmailIcon from "@material-ui/icons/Email"
 
 export const Form = props => {
   const {
-    values: { name, email, password, confirmPassword },
+    values: { userName, fullName, shortBio, socialLink },
     errors,
     touched,
     handleSubmit,
@@ -26,11 +26,11 @@ export const Form = props => {
   return (
     <form onSubmit={handleSubmit}>
       <TextField
-        name="name"
-        helperText={touched.name ? errors.name : ""}
-        error={Boolean(errors.name)}
-        label="Name"
-        value={name}
+        name="userName"
+        helperText={touched.userName ? errors.userName : ""}
+        error={Boolean(errors.userName)}
+        label="UserName"
+        value={userName}
         onChange={handleChange}
         fullWidth
         InputProps={{
@@ -41,14 +41,14 @@ export const Form = props => {
           ),
         }}
       />
-      <div>{Boolean(errors.name) ? errors.name : ""}</div>
+      <div>{Boolean(errors.userName) ? errors.userName : ""}</div>
       <TextField
-        name="email"
-        helperText={touched.email ? errors.email : ""}
-        error={Boolean(errors.email)}
-        label="Email"
+        name="fullName"
+        helperText={touched.fullName ? errors.fullName : ""}
+        error={Boolean(errors.fullName)}
+        label="FullName"
         fullWidth
-        value={email}
+        value={fullName}
         onChange={handleChange}
         InputProps={{
           startAdornment: (
@@ -58,15 +58,15 @@ export const Form = props => {
           ),
         }}
       />
-      <div>{Boolean(errors.email) ? errors.email : ""}</div>
+      <div>{Boolean(errors.fullName) ? errors.fullName : ""}</div>
       <TextField
-        name="password"
-        helperText={touched.password ? errors.password : ""}
-        error={Boolean(errors.password)}
-        label="Password"
+        name="shortBio"
+        helperText={touched.shortBio ? errors.shortBio : ""}
+        error={Boolean(errors.shortBio)}
+        label="ShortBio"
         fullWidth
-        type="password"
-        value={password}
+        type="shortBio"
+        value={shortBio}
         onChange={handleChange}
         InputProps={{
           startAdornment: (
@@ -76,15 +76,15 @@ export const Form = props => {
           ),
         }}
       />
-      <div>{errors.password}</div>
+      <div>{errors.shortBio}</div>
       <TextField
-        name="confirmPassword"
-        helperText={touched.confirmPassword ? errors.confirmPassword : ""}
-        error={Boolean(errors.confirmPassword)}
-        label="Confirm Password"
+        name="socialLink"
+        helperText={touched.socialLink ? errors.socialLink : ""}
+        error={Boolean(errors.socialLink)}
+        label="Social Link"
         fullWidth
-        type="password"
-        value={confirmPassword}
+        type="shortBio"
+        value={socialLink}
         onChange={handleChange}
         InputProps={{
           startAdornment: (
@@ -94,7 +94,7 @@ export const Form = props => {
           ),
         }}
       />
-      <div>{errors.confirmPassword}</div>
+      <div>{errors.socialLink}</div>
       <Button
         type="submit"
         fullWidth

@@ -23,35 +23,43 @@ export const CAT_BTNS = {
   "Cooking": <RestaurantIcon/>,
   // "Business": <BusinessIcon/>,
   "Travel": <FlightTakeoffIcon/>,
+  "prefix": "/",
 }
 
 export const PAGES_BTNS = {
   "Portfolio": <LibraryBooksIcon/>,
   // "Playground": <DesktopMacIcon/>,
   "About": <InfoIcon/>,
+  "prefix": "/",
 }
 
 export const OTHER_BTNS = {
   "Subscribe": <SubscriptionsIcon/>,
+  "prefix": "/",
 }
 
 export const LOGIN_BTN = {
   "Account": <AccountCircleIcon/>,
+  "prefix": "/",
+
 }
 
-export const ListRenderer = (obj, icon = true, prefix = "/") => (
+export const ListRenderer = (obj, icon = true) => (
   <List>
-    {Object.keys(obj).map((key, index) => (
-      <ListItem button key={key}>
-        {icon &&
-        <ListItemIcon>
-          {obj[key]}
-        </ListItemIcon>
-        }
-        <Link to={`${prefix}${key.toLowerCase()}/`} style={{ color: `black` }}>
-          <ListItemText primary={key}/>
-        </Link>
-      </ListItem>
-    ))}
+    {Object.keys(obj).map((key, index) => {
+      if (key !== "prefix") {
+        return (
+          <ListItem button key={key}>
+            {icon &&
+            <ListItemIcon>
+              {obj[key]}
+            </ListItemIcon>
+            }
+            <Link to={`${obj.prefix}${key.toLowerCase()}/`} style={{ color: `black` }}>
+              <ListItemText primary={key}/>
+            </Link>
+          </ListItem>)
+      }
+    })}
   </List>
 )

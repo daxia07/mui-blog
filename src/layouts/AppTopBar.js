@@ -1,6 +1,5 @@
 import React from "react"
 import clsx from "clsx"
-import _ from "lodash"
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -181,7 +180,7 @@ const AppTopBar = ({ siteTitle, main, isAuth }) => {
           </IconButton>
         </div>
         <Divider/>
-        {ListRenderer(CAT_BTNS, true, "/category/")}
+        {ListRenderer(CAT_BTNS, true, "/")}
         <Divider/>
         {ListRenderer(PAGES_BTNS, true)}
         <Divider/>

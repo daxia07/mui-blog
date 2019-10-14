@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   categories.forEach((cat, index) => {
     if (cat) {
       createPage({
-        path: `category/${cat}/`,
+        path: `${cat}/`,
         component: path.resolve("./src/templates/categoryPosts.js"),
         context: { category: cat },
       })

@@ -11,6 +11,6 @@ export const toLink = ele => {
   if (ele in ["Playground", `Portfolio`, "About"]) {
     return ele.toLowerCase()
   } else {
-    return `/category/${ele.toLowerCase()}/`
+    return `/${ele.toLowerCase()}/`
   }
 }

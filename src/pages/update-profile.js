@@ -1,5 +1,5 @@
 import React from "react"
-import InputForm from "../components/profileEdit"
+import InputForm from "../components/ProfileStyled"
 
 
 const ProfileForm = () => {

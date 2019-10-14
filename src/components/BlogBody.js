@@ -14,7 +14,7 @@ const BlogBody = ({ post }) => {
       <img src={imgUrl} className={classes.featuredImage} alt={"feature"}/>
       <div style={{ position: `relative` }}>
         <div className={classes.postCategory}>
-          <GLink to={`/category/${category}/`} style={{ textDecoration: `none`, color: `#FFF` }}>{category}</GLink>
+          <GLink to={`/${category}/`} style={{ textDecoration: `none`, color: `#FFF` }}>{category}</GLink>
         </div>
         <article className={classes.articlePost}>
           <ReactMarkdown>

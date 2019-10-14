@@ -20,16 +20,13 @@ const styles = theme => ({
 })
 
 const validationSchema = Yup.object({
-  name: Yup.string("Enter a name").required("Name is required"),
-  email: Yup.string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: Yup.string("")
-    .min(8, "Password must contain atleast 8 characters")
-    .required("Enter your password"),
-  confirmPassword: Yup.string("Enter your password")
-    .required("Confirm your password")
-    .oneOf([Yup.ref("password")], "Password does not match"),
+  username: Yup.string("Enter a unique username").required("username is required"),
+  fullName: Yup.string("Enter your fullName")
+    .required("Full Name is required"),
+  ShortBio: Yup.string("")
+    .min(20, "Short bio must contain at least 20 characters")
+    .required("Enter your short bio"),
+  SocialLink: Yup.string("Enter your social link").url(),
 })
 
 class InputForm extends Component {
@@ -44,12 +41,12 @@ class InputForm extends Component {
 
   render() {
     const classes = this.props
-    const values = { name: "", email: "", confirmPassword: "", password: "" }
+    const values = { userName: "", fullName: "", shortBio: "", socialLink: "" }
     return (
       <React.Fragment>
         <div className={classes.container}>
           <Paper elevation={1} className={classes.paper}>
-            <h1>Form</h1>
+            <h1>Update Profile</h1>
             <Formik
               render={props => <Form {...props} />}
               initialValues={values}

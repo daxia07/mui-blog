@@ -8,7 +8,7 @@ import NavBar from "./NavBar"
 import useStyles from "../styles/style"
 import { JssProvider } from "react-jss"
 
-const Layout = ({ children, classPrefix }) => {
+const Layout = ({ children, classPrefix, items }) => {
   const generateClassName = createGenerateClassName({
     productionPrefix: classPrefix,
   })
@@ -28,7 +28,7 @@ const Layout = ({ children, classPrefix }) => {
       <React.Fragment>
         <CssBaseline/>
         <Container className={classes.container}>
-          <NavBar siteTitle={data.site.siteMetadata.title} main={children}/>
+          <NavBar siteTitle={data.site.siteMetadata.title} main={children} items={items}/>
         </Container>
         <Footer/>
       </React.Fragment>
