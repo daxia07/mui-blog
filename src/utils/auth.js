@@ -79,8 +79,10 @@ export const getProfile = () => {
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
   localStorage.setItem("accessToken", "false")
+  const returnUrl = process.env.GATSBY_AUTH0_CALLBACK
+    .slice(0, process.env.GATSBY_AUTH0_CALLBACK.lastIndexOf("callback") - 1)
   webAuth.logout({
-    returnTo: "localhost:9000",
+    returnTo: returnUrl,
     client_id: process.env.GATSBY_AUTH0_CLIENTID,
   })
 }
