@@ -3,13 +3,13 @@ import { navigate } from "gatsby"
 
 const isBrowser = typeof window !== "undefined"
 
-const auth = isBrowser
+export const webAuth = isBrowser
   ? new auth0.WebAuth({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENTID,
     redirectUri: process.env.AUTH0_CALLBACK,
     responseType: "token id_token",
-    scope: "openid profile email",
+    scope: `openid profile email ${process.env.MY_DOMAIN}`,
   })
   : {}
 
@@ -34,7 +34,7 @@ export const login = () => {
     return
   }
 
-  auth.authorize()
+  webAuth.authorize()
 }
 
 const setSession = (cb = () => {
@@ -52,6 +52,7 @@ const setSession = (cb = () => {
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", "true")
+    localStorage.setItem("accessToken", tokens.accessToken)
     // navigate("/")
     cb()
   }
@@ -59,7 +60,7 @@ const setSession = (cb = () => {
 
 export const silentAuth = callback => {
   if (!isAuthenticated()) return callback()
-  auth.checkSession({}, setSession(callback))
+  webAuth.checkSession({}, setSession(callback))
 }
 
 export const handleAuthentication = () => {
@@ -67,7 +68,7 @@ export const handleAuthentication = () => {
     return
   }
 
-  auth.parseHash(setSession())
+  webAuth.parseHash(setSession())
 }
 
 export const getProfile = () => {
@@ -76,5 +77,7 @@ export const getProfile = () => {
 
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
-  auth.logout()
+  localStorage.setItem("accessToken", "false")
+  webAuth.logout()
 }
+
