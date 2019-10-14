@@ -10,8 +10,7 @@ import { capitalize } from "../utils/stringUtils"
 import SearchBar from "../components/SearchBar"
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded"
 import { isAuthenticated } from "../utils/auth"
-import { navigate } from "gatsby"
-
+import navigate from "../utils/navigate"
 
 const useStyles = makeStyles(theme => ({
   toolbar: {

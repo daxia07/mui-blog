@@ -1,6 +1,6 @@
 import React from "react"
 import { handleAuthentication } from "../utils/auth"
-import { navigate } from "gatsby"
+import navigate from "../utils/navigate"
 
 
 const Callback = () => {

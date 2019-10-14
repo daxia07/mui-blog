@@ -1,7 +1,9 @@
 import auth0 from "auth0-js"
-import { navigate } from "gatsby"
+import navigate from "./navigate"
 
-const isBrowser = typeof window !== "undefined"
+const windowGlobal = typeof window !== "undefined" && window
+
+const isBrowser = windowGlobal
 
 export const webAuth = isBrowser
   ? new auth0.WebAuth({
@@ -33,7 +35,6 @@ export const login = () => {
   if (!isBrowser) {
     return
   }
-
   webAuth.authorize()
 }
 
