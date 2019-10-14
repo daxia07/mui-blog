@@ -79,6 +79,9 @@ export const getProfile = () => {
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
   localStorage.setItem("accessToken", "false")
-  webAuth.logout()
+  webAuth.logout({
+    returnTo: "localhost:9000",
+    client_id: process.env.AUTH0_CLIENTID,
+  })
 }
 
