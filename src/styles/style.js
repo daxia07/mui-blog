@@ -3,13 +3,19 @@ import { makeStyles } from "@material-ui/core"
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+    display: `flex`,
+    alignItems: `center`,
   },
   toolbarTitle: {
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     overflowX: "auto",
+    "& ul": {
+      display: "flex",
+      alignContent: `stretch`,
+    },
   },
   toolbarLink: {
     padding: theme.spacing(1),

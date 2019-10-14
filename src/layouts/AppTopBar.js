@@ -18,34 +18,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import PropTypes from "prop-types"
 import { capitalize } from "../utils/stringUtils"
-import { CATEGORIES, PAGES, OTHERLINKS } from "../assets/constants"
-import CodeIcon from "@material-ui/icons/Code"
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney"
-import StorageIcon from "@material-ui/icons/Storage"
-import RestaurantIcon from "@material-ui/icons/Restaurant"
-import BusinessIcon from "@material-ui/icons/Business"
-import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff"
-import InfoIcon from "@material-ui/icons/Info"
-import LibraryBooksIcon from "@material-ui/icons/LibraryBooks"
-import DesktopMacIcon from "@material-ui/icons/DesktopMac"
+import { CAT_BTNS, PAGES_BTNS, OTHER_BTNS, LOGIN_BTN, ListRenderer } from "../assets/constants"
 import Link from "../components/Link"
-import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import SearchBar from "../components/SearchBar"
-
-
-const catIcons = [
-  <CodeIcon/>, <AttachMoneyIcon/>, <StorageIcon/>, <RestaurantIcon/>,
-  <BusinessIcon/>, <FlightTakeoffIcon/>,
-]
-
-const pageIcons = [
-  <LibraryBooksIcon/>, <DesktopMacIcon/>, <InfoIcon/>,
-]
-
-const linkIcons = [
-  <SubscriptionsIcon/>,
-]
 
 const drawerWidth = 240
 
@@ -206,46 +181,15 @@ const AppTopBar = ({ siteTitle, main, isAuth }) => {
           </IconButton>
         </div>
         <Divider/>
-        <List>
-          {_.zip(CATEGORIES, catIcons).map((ele, index) => (
-            <ListItem button key={ele[0]}>
-              <ListItemIcon>
-                {ele[1]}
-              </ListItemIcon>
-              <Link to={`/category/${ele[0].toLowerCase()}/`} style={{ color: `black` }}>
-                <ListItemText primary={ele[0]}/>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
+        {ListRenderer(CAT_BTNS, true, "/category/")}
         <Divider/>
-        <List>
-          {_.zip(PAGES, pageIcons).map((ele, index) => (
-            <ListItem button key={ele[0]}>
-              <ListItemIcon>
-                {ele[1]}
-              </ListItemIcon>
-              <Link to={`/${ele[0].toLowerCase()}/`} style={{ color: `black` }}>
-                <ListItemText primary={ele[0]}/>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
+        {ListRenderer(PAGES_BTNS, true)}
         <Divider/>
+        {ListRenderer(OTHER_BTNS, true)}
         <List>
-          {_.zip(OTHERLINKS, linkIcons).map((ele, index) => (
-            <ListItem button key={ele[0]}>
-              <ListItemIcon>
-                {ele[1]}
-              </ListItemIcon>
-              <Link to={`/${ele[0].toLowerCase()}/`} style={{ color: `black` }}>
-                <ListItemText primary={ele[0]}/>
-              </Link>
-            </ListItem>
-          ))}
           <ListItem button key="account">
             <ListItemIcon>
-              <AccountCircleIcon/>
+              {LOGIN_BTN.Account}
             </ListItemIcon>
             <Link to="/account" style={{ color: `black` }}>
               <ListItemText primary={isAuth ? "Account" : "Login"}/>

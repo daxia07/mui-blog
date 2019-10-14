@@ -2,12 +2,12 @@ import React from "react"
 import useStyles from "../styles/style"
 import { Typography, Card, CardActionArea, CardContent, Grid, Hidden, CardMedia } from "@material-ui/core"
 
-const SubFeaturedPost = ({posts}) => {
-  const classes = useStyles();
+const SubFeaturedPost = ({ posts }) => {
+  const classes = useStyles()
   return (
     <Grid container spacing={4} className={classes.cardGrid}>
       {posts.map(post => (
-        <Grid item key={post.title} xs={12} md={6}>
+        <Grid item key={post.slug} xs={12} md={6}>
           <CardActionArea component="a" href={`/blog/${post.slug}/`}>
             <Card className={classes.card}>
               <div className={classes.cardDetails}>

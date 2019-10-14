@@ -11,7 +11,6 @@ export const wrapRootElement = ({ element }) => {
   return (
     <StylesProvider jss={create({
       ...jssPreset(),
-      insertionPoint: `mui-inject-first`,
     })}>
       <ThemeProvider theme={siteTheme}>
         <SessionCheck>

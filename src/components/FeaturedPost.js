@@ -21,7 +21,7 @@ const FeaturedPost = ({ post }) => {
             <Typography variant="h5" paragraph style={{ color: "white" }}>
               {description}
             </Typography>
-            <Link to={`blog/${slug}/`} className={classes.featureLink}>
+            <Link to={`/blog/${slug}/`} className={classes.featureLink}>
               <Typography variant="subtitle1" paragraph className={classes.readMore} color="primary">
                 Continue reading...
               </Typography>

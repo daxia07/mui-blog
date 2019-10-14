@@ -6,8 +6,8 @@ import { toLink } from "../utils/stringUtils"
 import useWindowDimensions from "../utils/windowDimensions"
 import Header from "./Header"
 import AppTopBar from "./AppTopBar"
-import { SECTIONS as sections } from "../assets/constants"
 import { isAuthenticated } from "../utils/auth"
+import { ListRenderer, CAT_BTNS, PAGES_BTNS } from "../assets/constants"
 
 
 function NavBar({ siteTitle, main }) {
@@ -26,14 +26,8 @@ function NavBar({ siteTitle, main }) {
         <React.Fragment>
           <Header siteTitle={siteTitle} isAuth={isAuth}/>
           <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-            {sections.map(section => (
-              <Link to={toLink(section)} key={section} className={classes.navBarLink}
-                    activeClassName={classes.navLinkActive}>
-                <Button color="inherit" className={classes.toolbarLink}>
-                  {section}
-                </Button>
-              </Link>
-            ))}
+            {ListRenderer(CAT_BTNS, false)}
+            {ListRenderer(PAGES_BTNS, false)}
           </Toolbar>
           <main>{main}</main>
         </React.Fragment>
