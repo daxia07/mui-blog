@@ -32,7 +32,6 @@ import Link from "../components/Link"
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 import SearchBar from "../components/SearchBar"
-import { isAuthenticated } from "../utils/auth"
 
 
 const catIcons = [
@@ -153,7 +152,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const AppTopBar = ({ siteTitle, main }) => {
+const AppTopBar = ({ siteTitle, main, isAuth }) => {
   const title = siteTitle.replace("-", " ")
   const classes = useStyles()
   const theme = useTheme()
@@ -249,7 +248,7 @@ const AppTopBar = ({ siteTitle, main }) => {
               <AccountCircleIcon/>
             </ListItemIcon>
             <Link to="/account" style={{ color: `black` }}>
-              <ListItemText primary={isAuthenticated() ? "Account" : "Login"}/>
+              <ListItemText primary={isAuth ? "Account" : "Login"}/>
             </Link>
           </ListItem>
         </List>

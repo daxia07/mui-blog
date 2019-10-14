@@ -1,23 +1,56 @@
-import React from "react"
-import { Button, Toolbar } from "@material-ui/core"
+import React, { useState, useEffect } from "react"
+import { Button, Toolbar, useTheme } from "@material-ui/core"
 import useStyles from "../styles/style"
-import { Link as GLink } from "gatsby"
+import Link from "../components/Link"
 import { toLink } from "../utils/stringUtils"
+import useWindowDimensions from "../utils/windowDimensions"
+import Header from "./Header"
+import AppTopBar from "./AppTopBar"
+import { SECTIONS as sections } from "../assets/constants"
+import { isAuthenticated } from "../utils/auth"
 
 
-function NavBar({ sections }) {
+function NavBar({ siteTitle, main }) {
   const classes = useStyles()
+  const { width } = useWindowDimensions()
+  const theme = useTheme()
+  const [isAuth, setIsAuth] = useState(isAuthenticated())
+  useEffect(() => {
+    setIsAuth(isAuthenticated())
+    return () => {
+    }
+  }, [])
+  const renderHelper = (windowWidth) => {
+    if (windowWidth > theme.breakpoints.values["md"]) {
+      return (
+        <React.Fragment>
+          <Header siteTitle={siteTitle} isAuth={isAuth}/>
+          <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+            {sections.map(section => (
+              <Link to={toLink(section)} key={section} className={classes.navBarLink}
+                    activeClassName={classes.navLinkActive}>
+                <Button color="inherit" className={classes.toolbarLink}>
+                  {section}
+                </Button>
+              </Link>
+            ))}
+          </Toolbar>
+          <main>{main}</main>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <AppTopBar siteTitle={siteTitle} main={main} isAuth={isAuth}/>
+        </React.Fragment>
+      )
+    }
+  }
+
   return (
-    <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-      {sections.map(section => (
-        <GLink to={toLink(section)} key={section} className={classes.navBarLink}
-               activeClassName={classes.navLinkActive}>
-          <Button color="inherit" className={classes.toolbarLink}>
-            {section}
-          </Button>
-        </GLink>
-      ))}
-    </Toolbar>
+    <React.Fragment>
+      {renderHelper(width)}
+    </React.Fragment>
   )
 }
 

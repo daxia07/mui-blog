@@ -1,17 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
-import Header from "./Header"
 import Footer from "./Footer"
 import { createGenerateClassName, CssBaseline } from "@material-ui/core"
 import Container from "@material-ui/core/Container"
 import NavBar from "./NavBar"
-import useWindowDimensions from "../utils/windowDimensions"
-import AppTopBar from "./AppTopBar"
-import { SECTIONS as sections } from "../assets/constants"
 import useStyles from "../styles/style"
 import { JssProvider } from "react-jss"
-import { useTheme } from "@material-ui/core"
 
 const Layout = ({ children, classPrefix }) => {
   const generateClassName = createGenerateClassName({
@@ -26,33 +21,14 @@ const Layout = ({ children, classPrefix }) => {
           }
       }
   `)
-  const { width } = useWindowDimensions()
-  const classes = useStyles()
-  const theme = useTheme()
-  const renderHelper = (windowWidth) => {
-    if (windowWidth > theme.breakpoints.values["md"]) {
-      return (
-        <React.Fragment>
-          <Header siteTitle={data.site.siteMetadata.title}/>
-          <NavBar sections={sections}/>
-          <main>{children}</main>
-        </React.Fragment>
-      )
-    } else {
-      return (
-        <React.Fragment>
-          <AppTopBar siteTitle={data.site.siteMetadata.title} main={children}/>
-        </React.Fragment>
-      )
-    }
-  }
 
+  const classes = useStyles()
   return (
     <JssProvider generateClassName={generateClassName}>
       <React.Fragment>
         <CssBaseline/>
         <Container className={classes.container}>
-          {renderHelper(width)}
+          <NavBar siteTitle={data.site.siteMetadata.title} main={children}/>
         </Container>
         <Footer/>
       </React.Fragment>

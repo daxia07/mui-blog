@@ -9,7 +9,6 @@ import Link from "../components/Link"
 import { capitalize } from "../utils/stringUtils"
 import SearchBar from "../components/SearchBar"
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded"
-import { isAuthenticated } from "../utils/auth"
 import navigate from "../utils/navigate"
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, isAuth }) => {
   const classes = useStyles()
   const title = siteTitle.replace("-", " ")
   const navToAccount = evt => {
@@ -62,7 +61,7 @@ const Header = ({ siteTitle }) => {
       <IconButton>
         <SearchBar/>
       </IconButton>
-      {isAuthenticated() ? <AccountCircleRoundedIcon onClick={navToAccount}/> :
+      {isAuth ? <AccountCircleRoundedIcon onClick={navToAccount}/> :
         <Button variant="outlined" size="small" onClick={navToAccount}>
           Sign up
         </Button>
