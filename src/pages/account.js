@@ -1,6 +1,6 @@
 import React from "react"
 import { Router } from "@reach/router"
-import { login, isAuthenticated, getProfile } from "../utils/auth"
+import { login, isAuthenticated, getProfile, webAuth } from "../utils/auth"
 import InputForm from "../components/ProfileStyled"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
@@ -13,6 +13,7 @@ const Home = ({ user }) => {
 }
 const Profile = () => <InputForm/>
 
+
 const Account = () => {
   const classes = useStyles()
   if (!isAuthenticated()) {
@@ -21,6 +22,9 @@ const Account = () => {
   }
   const user = getProfile()
   console.log(user)
+  webAuth.checkSession({
+    audience: process.env.GATSBY_AUTH0_AUDIENCE,
+  }, (err, res) => console.log(res))
   return (
     <Layout classPrefix="acc" items={accountNav}>
       <SEO title={"Account"}/>

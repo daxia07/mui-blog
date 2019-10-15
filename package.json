@@ -13,6 +13,7 @@
     "@reach/router": "^1.2.1",
     "auth0-js": "^9.11.3",
     "clsx": "^1.0.4",
+    "dotenv": "^8.1.0",
     "downshift": "^3.3.4",
     "elasticlunr": "^0.9.5",
     "formik": "^1.5.8",
