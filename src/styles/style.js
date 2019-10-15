@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
   },
   toolbarSecondary: {
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     overflowX: "auto",
     "& ul": {
       display: "flex",
@@ -105,6 +105,7 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 15,
     paddingLeft: 15,
     marginTop: 5,
+    minHeight: `85vh`,
     [theme.breakpoints.down("sm")]: {
       width: `70%`,
       paddingLeft: 0,

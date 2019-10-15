@@ -15,51 +15,104 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import Link from "../components/Link"
 import ListItemText from "@material-ui/core/ListItemText"
 import List from "@material-ui/core/List"
+import LogoutBtn from "../components/LogoutBtn"
+import HomeIcon from "@material-ui/core/SvgIcon/SvgIcon"
+import SettingsIcon from "@material-ui/icons/Settings"
+import NoteIcon from "@material-ui/icons/Note"
+import CommentIcon from "@material-ui/icons/Comment"
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd"
+import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 
 export const CAT_BTNS = {
-  "Development": <CodeIcon/>,
-  "Investment": <AttachMoneyIcon/>,
+  "Development": { icon: <CodeIcon/> },
+  "Investment": { icon: <AttachMoneyIcon/> },
   // "Data": <StorageIcon/>,
-  "Cooking": <RestaurantIcon/>,
+  "Cooking": { icon: <RestaurantIcon/> },
   // "Business": <BusinessIcon/>,
-  "Travel": <FlightTakeoffIcon/>,
-  "prefix": "/",
+  "Travel": { icon: <FlightTakeoffIcon/> },
 }
 
 export const PAGES_BTNS = {
-  "Portfolio": <LibraryBooksIcon/>,
+  "Portfolio": { icon: <LibraryBooksIcon/> },
   // "Playground": <DesktopMacIcon/>,
-  "About": <InfoIcon/>,
-  "prefix": "/",
+  "About": { icon: <InfoIcon/> },
 }
 
 export const OTHER_BTNS = {
-  "Subscribe": <SubscriptionsIcon/>,
-  "prefix": "/",
+  "Subscribe": { icon: <SubscriptionsIcon/> },
 }
 
 export const LOGIN_BTN = {
-  "Account": <AccountCircleIcon/>,
-  "prefix": "/",
-
+  "Account": { icon: <AccountCircleIcon/> },
 }
 
-export const ListRenderer = (obj, icon = true) => (
+export const LOGOUT_BTN = {
+  "Logout": { icon: <LogoutBtn/> },
+  "prefix": "/",
+}
+
+export const makeLinkItem = (name, prefix = "/") =>
+  <Link to={`/${prefix}/${name.toLowerCase()}/`} style={{ color: `black` }}>
+    <ListItemText primary={name}/>
+  </Link>
+
+
+export const ListRenderer = (items, icon = true) => (
   <List>
-    {Object.keys(obj).map((key, index) => {
-      if (key !== "prefix") {
-        return (
-          <ListItem button key={key}>
-            {icon &&
-            <ListItemIcon>
-              {obj[key]}
-            </ListItemIcon>
-            }
-            <Link to={`${obj.prefix}${key.toLowerCase()}/`} style={{ color: `black` }}>
-              <ListItemText primary={key}/>
-            </Link>
-          </ListItem>)
-      }
-    })}
+    {items.map((item, index) =>
+      <ListItem button key={index}>
+        {icon &&
+        <ListItemIcon>
+          {item.icon}
+        </ListItemIcon>
+        }
+        {item.comp}
+      </ListItem>)
+    }
   </List>
 )
+
+export const accountNav = [
+  {
+    name: "Home",
+    icon: <HomeIcon/>,
+    comp:
+      <Link to={`/account/`} style={{ color: `black` }}>
+        <ListItemText primary={"Home"}/>
+      </Link>,
+  },
+  {
+    name: "Posts",
+    icon: <NoteIcon/>,
+    comp: makeLinkItem("Posts", "/account/"),
+  },
+  {
+    name: "Comments",
+    icon: <CommentIcon/>,
+    comp: makeLinkItem("Comments", "/account/"),
+  },
+  {
+    name: "Profile",
+    icon: <AssignmentIndIcon/>,
+    comp: makeLinkItem("Profile", "/account/"),
+  },
+  {
+    name: "Setting",
+    icon: <SettingsIcon/>,
+    comp: makeLinkItem("Setting", "/account/"),
+  },
+  {
+    name: "Logout",
+    icon: <ExitToAppIcon/>,
+    comp: <LogoutBtn/>,
+  },
+]
+
+const defaultItems = { ...CAT_BTNS, ...PAGES_BTNS }
+
+Object.keys(defaultItems).forEach((key, index) => {
+  defaultItems[key].name = key
+  defaultItems[key].comp = makeLinkItem(key)
+})
+
+export const defaultNavItems = Object.values(defaultItems)

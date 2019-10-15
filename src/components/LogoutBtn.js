@@ -1,18 +1,16 @@
 import React from "react"
 import { logout } from "../utils/auth"
-import Link from "./Link"
+import ListItemText from "@material-ui/core/ListItemText"
+import { Button } from "@material-ui/core"
 
 const LogoutBtn = () => {
   return (
-    <Link
-      href="/"
-      onClick={e => {
-        e.preventDefault()
-        logout()
-      }}
-    >
-      Log Out
-    </Link>
+    <Button style={{ color: `black` }} onClick={e => {
+      e.preventDefault()
+      logout()
+    }}>
+      <ListItemText primary={"Logout"}/>
+    </Button>
   )
 }
 

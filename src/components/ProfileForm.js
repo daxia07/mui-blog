@@ -3,8 +3,8 @@ import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import NameIcon from "@material-ui/icons/SupervisorAccount"
-import LockIcon from "@material-ui/icons/Lock"
-import EmailIcon from "@material-ui/icons/Email"
+import DescriptionIcon from "@material-ui/icons/Description"
+import LinkIcon from "@material-ui/icons/Link"
 
 export const Form = props => {
   const {
@@ -53,7 +53,7 @@ export const Form = props => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <EmailIcon/>
+              <NameIcon/>
             </InputAdornment>
           ),
         }}
@@ -71,7 +71,7 @@ export const Form = props => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <LockIcon/>
+              <DescriptionIcon/>
             </InputAdornment>
           ),
         }}
@@ -89,7 +89,7 @@ export const Form = props => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <LockIcon/>
+              <LinkIcon/>
             </InputAdornment>
           ),
         }}

@@ -7,6 +7,8 @@ import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import LogoutBtn from "../components/LogoutBtn"
 
+import { accountNav } from "../assets/constants"
+
 const Home = ({ user }) => {
   return <p>Hi, {user.name ? user.name : "friend"}!</p>
 }
@@ -20,15 +22,9 @@ const Account = () => {
   }
   const user = getProfile()
   console.log(user)
-  const items = {};
-  ["Home", "Posts", "Comments", "Profile", "Settings"].forEach((ele, index) => {
-    items[ele] = ""
-  })
-  items.prefix = "account/"
-  console.log(items)
 
   return (
-    <Layout classPrefix="acc" items={[items]}>
+    <Layout classPrefix="acc" items={accountNav}>
       <SEO title={"Account"}/>
       <LogoutBtn/>
       <nav>
@@ -47,7 +43,7 @@ const Account = () => {
       </nav>
       <Router>
         <Home path="/account" user={user}/>
-        <Profile path="/account/settings"/>
+        <Profile path="/account/profile"/>
         <Billing path="/account/billing"/>
       </Router>
     </Layout>

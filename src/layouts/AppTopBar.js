@@ -17,9 +17,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import PropTypes from "prop-types"
 import { capitalize } from "../utils/stringUtils"
-import { CAT_BTNS, PAGES_BTNS, OTHER_BTNS, LOGIN_BTN, ListRenderer } from "../assets/constants"
+import { LOGIN_BTN, ListRenderer, defaultNavItems } from "../assets/constants"
 import Link from "../components/Link"
 import SearchBar from "../components/SearchBar"
+import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded"
 
 const drawerWidth = 240
 
@@ -126,7 +127,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const AppTopBar = ({ siteTitle, main, isAuth }) => {
+const AppTopBar = ({ siteTitle, main, isAuth, items }) => {
+  const navItems = items ? items : defaultNavItems
   const title = siteTitle.replace("-", " ")
   const classes = useStyles()
   const theme = useTheme()
@@ -179,16 +181,13 @@ const AppTopBar = ({ siteTitle, main, isAuth }) => {
             {theme.direction === "ltr" ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </div>
+        {console.log(navItems)}
+        {ListRenderer(navItems, true)}
         <Divider/>
-        {ListRenderer(CAT_BTNS, true, "/")}
-        <Divider/>
-        {ListRenderer(PAGES_BTNS, true)}
-        <Divider/>
-        {ListRenderer(OTHER_BTNS, true)}
         <List>
           <ListItem button key="account">
             <ListItemIcon>
-              {LOGIN_BTN.Account}
+              <AccountBoxRoundedIcon/>
             </ListItemIcon>
             <Link to="/account" style={{ color: `black` }}>
               <ListItemText primary={isAuth ? "Account" : "Login"}/>

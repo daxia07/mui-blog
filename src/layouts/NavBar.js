@@ -5,12 +5,11 @@ import useWindowDimensions from "../utils/windowDimensions"
 import Header from "./Header"
 import AppTopBar from "./AppTopBar"
 import { isAuthenticated } from "../utils/auth"
-import { ListRenderer, CAT_BTNS, PAGES_BTNS } from "../assets/constants"
+import { ListRenderer, defaultNavItems } from "../assets/constants"
 
 
-function NavBar({ siteTitle, main, items }) {
-  const navItems = items ? items : [CAT_BTNS, PAGES_BTNS]
-  console.log(navItems)
+const NavBar = ({ siteTitle, main, items }) => {
+  const navItems = items ? items : defaultNavItems
   const classes = useStyles()
   const { width } = useWindowDimensions()
   const theme = useTheme()
@@ -26,9 +25,7 @@ function NavBar({ siteTitle, main, items }) {
         <React.Fragment>
           <Header siteTitle={siteTitle} isAuth={isAuth}/>
           <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-            {navItems.map((ele, index) =>
-              ListRenderer(ele, false),
-            )}
+            {ListRenderer(navItems, true)}
           </Toolbar>
           <main>{main}</main>
         </React.Fragment>
@@ -36,7 +33,7 @@ function NavBar({ siteTitle, main, items }) {
     } else {
       return (
         <React.Fragment>
-          <AppTopBar siteTitle={siteTitle} main={main} isAuth={isAuth}/>
+          <AppTopBar siteTitle={siteTitle} main={main} isAuth={isAuth} items={items}/>
         </React.Fragment>
       )
     }
