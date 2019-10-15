@@ -63,7 +63,7 @@ export const Form = props => {
         name="shortBio"
         helperText={touched.shortBio ? errors.shortBio : ""}
         error={Boolean(errors.shortBio)}
-        label="ShortBio"
+        label="shortBio"
         fullWidth
         type="shortBio"
         value={shortBio}
@@ -98,7 +98,7 @@ export const Form = props => {
       <Button
         type="submit"
         fullWidth
-        variant="raised"
+        variant="contained"
         color="primary"
         disabled={!isValid}
       >

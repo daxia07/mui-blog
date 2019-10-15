@@ -85,22 +85,22 @@ export const accountNav = [
   {
     name: "Posts",
     icon: <NoteIcon/>,
-    comp: makeLinkItem("Posts", "/account/"),
+    comp: makeLinkItem("Posts", "account"),
   },
   {
     name: "Comments",
     icon: <CommentIcon/>,
-    comp: makeLinkItem("Comments", "/account/"),
+    comp: makeLinkItem("Comments", "account"),
   },
   {
     name: "Profile",
     icon: <AssignmentIndIcon/>,
-    comp: makeLinkItem("Profile", "/account/"),
+    comp: makeLinkItem("Profile", "account"),
   },
   {
     name: "Setting",
     icon: <SettingsIcon/>,
-    comp: makeLinkItem("Setting", "/account/"),
+    comp: makeLinkItem("Setting", "account"),
   },
   {
     name: "Logout",
