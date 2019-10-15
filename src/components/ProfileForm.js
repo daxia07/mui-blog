@@ -16,13 +16,13 @@ export const Form = props => {
     isValid,
     setFieldTouched,
   } = props
-  console.table(props)
-
-  const change = (name, e) => {
-    e.persist()
-    handleChange(e)
-    setFieldTouched(name, true, false)
-  }
+  // console.table(props)
+  //
+  // const change = (name, e) => {
+  //   e.persist()
+  //   handleChange(e)
+  //   setFieldTouched(name, true, false)
+  // }
   return (
     <form onSubmit={handleSubmit}>
       <TextField

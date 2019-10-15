@@ -1,12 +1,14 @@
 import React from "react"
 import { Router } from "@reach/router"
-import { login, isAuthenticated, getProfile, webAuth } from "../utils/auth"
+import { login, isAuthenticated, getProfile } from "../utils/auth"
 import InputForm from "../components/ProfileStyled"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import { accountNav } from "../assets/constants"
 import { Container } from "@material-ui/core"
 import useStyles from "../styles/style"
+
+//TODO: renew token if active
 
 const Home = ({ user }) => {
   return <p>Hi, {user.name ? user.name : "friend"}!</p>
@@ -22,9 +24,6 @@ const Account = () => {
   }
   const user = getProfile()
   console.log(user)
-  webAuth.checkSession({
-    audience: process.env.GATSBY_AUTH0_AUDIENCE,
-  }, (err, res) => console.log(res))
   return (
     <Layout classPrefix="acc" items={accountNav}>
       <SEO title={"Account"}/>
