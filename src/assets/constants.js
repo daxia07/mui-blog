@@ -17,6 +17,7 @@ import ListItemText from "@material-ui/core/ListItemText"
 import List from "@material-ui/core/List"
 import LogoutBtn from "../components/LogoutBtn"
 import HomeIcon from "@material-ui/core/SvgIcon/SvgIcon"
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded"
 import SettingsIcon from "@material-ui/icons/Settings"
 import NoteIcon from "@material-ui/icons/Note"
 import CommentIcon from "@material-ui/icons/Comment"
@@ -75,7 +76,7 @@ export const ListRenderer = (items, icon = true) => (
 export const accountNav = [
   {
     name: "Home",
-    icon: <HomeIcon/>,
+    icon: <HomeRoundedIcon/>,
     comp:
       <Link to={`/account/`} style={{ color: `black` }}>
         <ListItemText primary={"Home"}/>

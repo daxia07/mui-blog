@@ -15,6 +15,11 @@ const useStyles = makeStyles(theme => ({
     "& ul": {
       display: "flex",
       alignContent: `stretch`,
+      "& div": {
+        paddingLeft: 8,
+        paddingRight: 8,
+        minWidth: 20,
+      },
     },
   },
   toolbarLink: {
