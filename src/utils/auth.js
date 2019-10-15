@@ -12,6 +12,7 @@ export const webAuth = isBrowser
     redirectUri: process.env.GATSBY_AUTH0_CALLBACK,
     responseType: "token id_token",
     scope: `openid profile email ${process.env.GATSBY_MY_DOMAIN}`,
+    audience: `https://${process.env.GATSBY_AUTH0_DOMAIN}/api/v2/`,
   })
   : {}
 
@@ -47,6 +48,7 @@ const setSession = (cb = () => {
   }
 
   if (authResult && authResult.accessToken && authResult.idToken) {
+    console.log(authResult)
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime()
     tokens.accessToken = authResult.accessToken
     tokens.idToken = authResult.idToken
