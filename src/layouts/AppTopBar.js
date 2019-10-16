@@ -181,7 +181,6 @@ const AppTopBar = ({ siteTitle, main, isAuth, items }) => {
             {theme.direction === "ltr" ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
           </IconButton>
         </div>
-        {console.log(navItems)}
         {ListRenderer(navItems, true)}
         <Divider/>
         <List>

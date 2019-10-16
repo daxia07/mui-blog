@@ -48,7 +48,9 @@ const styles = theme => ({
 })
 
 const validationSchema = Yup.object({
-  userName: Yup.string("Enter a unique username").required("username is required"),
+  userName: Yup.string("Enter a unique username")
+    .trim("No whitespaces allowed")
+    .required("username is required"),
   fullName: Yup.string("Enter your fullName")
     .required("Full Name is required"),
   shortBio: Yup.string("")
@@ -132,9 +134,9 @@ class InputForm extends Component {
               ContentProps={{
                 "aria-describedby": "message-id",
               }}>
-              {console.log(this.state)}
               <MessageBar variant={this.state.infoType} message={this.state.msg} onClose={this.handleClose}/>
             </Snackbar>
+
             <Typography variant={"h4"} align={"center"} gutterBottom={true}>
               Update Profile
             </Typography>
