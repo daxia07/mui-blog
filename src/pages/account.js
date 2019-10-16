@@ -33,7 +33,6 @@ const Account = () => {
           <Profile path="/account/profile"/>
         </Router>
       </Container>
-
     </Layout>
   )
 }

@@ -68,7 +68,10 @@ class InputForm extends Component {
   }
 
   handleClick = () => {
-    this.setState({ open: true })
+    this.setState({
+      ...this.state,
+      open: true,
+    })
   }
 
   handleClose = () => {
@@ -128,8 +131,8 @@ class InputForm extends Component {
               onClose={this.handleClose}
               ContentProps={{
                 "aria-describedby": "message-id",
-              }}
-              message={<span id="message-id">I love snacks</span>}>
+              }}>
+              {console.log(this.state)}
               <MessageBar variant={this.state.infoType} message={this.state.msg} onClose={this.handleClose}/>
             </Snackbar>
             <Typography variant={"h4"} align={"center"} gutterBottom={true}>
