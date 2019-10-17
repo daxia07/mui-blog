@@ -14,11 +14,17 @@ const useStyles = makeStyles(theme => ({
     overflowX: "auto",
     "& ul": {
       display: "flex",
+      flex: `0 0 100%`,
       alignContent: `stretch`,
       "& div": {
         paddingLeft: 8,
         paddingRight: 8,
-        minWidth: 20,
+        // minWidth: 20,
+        [theme.breakpoints.down("lg")]: {
+          minWidth: 0,
+          paddingLeft: 4,
+          paddingRight: 4,
+        },
       },
     },
   },

@@ -66,7 +66,13 @@ class InputForm extends Component {
       open: false,
       infoType: "info",
       msg: "",
+      profile: {},
     }
+  }
+
+  componentDidMount() {
+    // get user info
+    //TODO: fetch with GraphQL and fill in as placeholder
   }
 
   handleClick = () => {
