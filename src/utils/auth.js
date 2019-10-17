@@ -48,7 +48,6 @@ const setSession = (cb = () => {
   }
 
   if (authResult && authResult.accessToken && authResult.idToken) {
-    console.log(authResult)
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime()
     tokens.accessToken = authResult.accessToken
     tokens.idToken = authResult.idToken
@@ -75,6 +74,18 @@ export const handleAuthentication = () => {
 }
 
 export const getProfile = () => {
+  // load temp meta data
+  const appMeta = localStorage.getItem("appMeta")
+  const accessToken = localStorage.getItem("accessToken")
+  if (appMeta) {
+    user["https://prawn-dumpling.com"].app_metadata = {
+      ...user["https://prawn-dumpling.com"].app_metadata,
+      ...appMeta,
+    }
+  }
+  if (accessToken) {
+    user["accessToken"] = accessToken
+  }
   return user
 }
 

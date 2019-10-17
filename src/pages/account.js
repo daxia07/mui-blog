@@ -32,6 +32,7 @@ const Account = () => {
     //TODO: pull snackBar to the upper level as message container
     //create a ref for children to modify message
     //OR: use redux to convey messages
+    console.log("navigating to update profile")
     navigate("/account/profile")
     //TODO: pop up message
   }

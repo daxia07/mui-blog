@@ -8,6 +8,7 @@ import { Typography, Snackbar } from "@material-ui/core"
 import API from "../utils/api"
 import MessageBar from "./message"
 import { amber, green } from "@material-ui/core/colors"
+import { getProfile } from "../utils/auth"
 
 
 const styles = theme => ({
@@ -66,7 +67,6 @@ class InputForm extends Component {
       open: false,
       infoType: "info",
       msg: "",
-      profile: {},
     }
   }
 
@@ -106,6 +106,7 @@ class InputForm extends Component {
           msg: res.data.msg,
         },
       )
+      //TODO: update user info
     } else if (res.data && res.data.status && res.data.status !== 200) {
       this.setState({
         ...this.state,
@@ -123,10 +124,14 @@ class InputForm extends Component {
   }
 
   render() {
+    //TODO: fetch data via GraphQL client
+    const user = getProfile()
+    let { username: inputName } = user["https://www.prawn-dumpling.com"].app_metadata
+    inputName = inputName === undefined ? "" : inputName
     const classes = this.props
     const vertical = "top"
     const horizontal = "center"
-    const values = { userName: "", fullName: "", shortBio: "", socialLink: "" }
+    const values = { userName: inputName, fullName: "", shortBio: "", socialLink: "" }
     return (
       <React.Fragment>
         <div className={classes.container}>
