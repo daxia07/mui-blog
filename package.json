@@ -43,9 +43,9 @@
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-jss": "^10.0.0",
-    "react-select": "^3.0.8",
+    "react-select": "1.2.0",
     "react-swipeable-views": "^0.13.3",
-    "rheostat": "^4.0.1",
+    "rheostat": "3.0.0",
     "yup": "0.24.0"
   },
   "devDependencies": {

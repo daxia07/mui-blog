@@ -1,15 +1,14 @@
 import React from "react"
 import Select from "react-select"
 import { Field } from "./FormPrimitives"
-// import "react-select/dist/react-select.css"
+import "react-select/dist/react-select.css"
 
 const options = [
-  { value: "Food", label: "Food" },
-  { value: "Being Fabulous", label: "Being Fabulous" },
-  { value: "Ken Wheeler", label: "Ken Wheeler" },
-  { value: "ReasonML", label: "ReasonML" },
-  { value: "Unicorns", label: "Unicorns" },
-  { value: "Kittens", label: "Kittens" },
+  { value: "development", label: "Development" },
+  { value: "investment", label: "Investment" },
+  { value: "cooking", label: "Cooking" },
+  { value: "travel", label: "Travel" },
+  { value: "others", label: "Others" },
 ]
 
 class MySelect extends React.Component {
