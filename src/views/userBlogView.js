@@ -14,6 +14,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import UpIcon from "@material-ui/icons/KeyboardArrowUp"
 import { green } from "@material-ui/core/colors"
 import Box from "@material-ui/core/Box"
+import navigate from "../utils/navigate"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -66,7 +67,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function FloatingActionButtonZoom() {
+const createPost = () => {
+  navigate("/account/editor")
+}
+
+
+export default function UserArticles() {
   const classes = useStyles()
   const theme = useTheme()
   const [value, setValue] = React.useState(0)
@@ -88,7 +94,7 @@ export default function FloatingActionButtonZoom() {
     {
       color: "primary",
       className: classes.fab,
-      icon: <AddIcon/>,
+      icon: <AddIcon onClick={createPost}/>,
       label: "Add",
     },
     {

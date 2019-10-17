@@ -1,24 +1,24 @@
 import React from "react"
 import { Router } from "@reach/router"
 import { login, isAuthenticated, getProfile } from "../utils/auth"
-import InputForm from "../components/ProfileStyled"
+import ProfileForm from "../components/ProfileStyled"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import { accountNav } from "../assets/constants"
 import { Container } from "@material-ui/core"
 import useStyles from "../styles/style"
-import FloatingActionButtonZoom from "../views/blogView"
+import UserArticles from "../views/userBlogView"
 import navigate from "../utils/navigate"
+import Comments from "../components/Comments"
+import EditorView from "../views/EditorView"
+
 
 //TODO: renew token if active
 
 const Home = ({ user }) => {
   // return <p>Hi, {user.name ? user.name : "friend"}!</p>
-  return <FloatingActionButtonZoom/>
+  return <UserArticles/>
 }
-
-const Profile = () => <InputForm/>
-
 
 const Account = () => {
   const classes = useStyles()
@@ -43,7 +43,10 @@ const Account = () => {
       <Container className={classes.container}>
         <Router>
           <Home path="/account" user={user}/>
-          <Profile path="/account/profile"/>
+          <UserArticles path="account/posts"/>
+          <Comments path="account/comments"/>
+          <ProfileForm path="/account/profile"/>
+          <EditorView path="/account/editor"/>
         </Router>
       </Container>
     </Layout>

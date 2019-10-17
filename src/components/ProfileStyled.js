@@ -60,7 +60,7 @@ const validationSchema = Yup.object({
   SocialLink: Yup.string("Enter your social link").url(),
 })
 
-class InputForm extends Component {
+class ProfileForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -164,4 +164,4 @@ class InputForm extends Component {
   }
 }
 
-export default withStyles(styles)(InputForm)
+export default withStyles(styles)(ProfileForm)
