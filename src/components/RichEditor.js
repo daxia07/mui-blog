@@ -1,6 +1,6 @@
 import React from "react"
 import { Editor, EditorState, RichUtils } from "draft-js"
-// import "./RichEditor.css"
+import "../styles/rich-editor.css"
 
 export default class RichEditorExample extends React.Component {
   onChange = editorState => {

@@ -1,0 +1,48 @@
+.slider {
+    margin: 2rem 0;
+}
+
+.rheostat {
+    margin-top: 1rem;
+}
+
+.rheostat-progress {
+    background-color: #08c !important;
+}
+
+.rheostat-horizontal .rheostat-progress {
+    height: 5px;
+    top: 0;
+}
+
+.rheostat-horizontal .rheostat-background {
+    height: 5px;
+    top: 0px;
+    width: 100%;
+}
+
+.rheostat-horizontal .rheostat-handle {
+    top: -10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.rheostat-horizontal .rheostat-handle:active {
+    border: 1px solid #08c;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 0 3px rgba(0, 126, 255, 0.1);
+
+}
+
+.rheostat-handle:before, .rheostat-handle:after {
+    content: '';
+    display: none;
+    position: absolute;
+    background-color: #dadfe8;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

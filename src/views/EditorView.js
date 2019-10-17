@@ -1,7 +1,8 @@
 import React from "react"
 import DisplayFormikState from "../utils/formik-helper"
-import { Formik } from "formik"
+import { withFormik } from "formik"
 import Yup from "yup"
+import "../styles/formik-demo.css"
 
 import { EditorState } from "draft-js"
 
@@ -10,7 +11,7 @@ import Select from "../components/Select"
 import RichEditor from "../components/RichEditor"
 import Slider from "../components/Slider"
 
-const formikEnhancer = Formik({
+const formikEnhancer = withFormik({
   validationSchema: Yup.object().shape({
     title: Yup.string()
       .min(5, "Too short!")

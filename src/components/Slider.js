@@ -1,8 +1,8 @@
 import React from "react"
 import Rheostat from "rheostat"
-// import 'rheostat/css/slider.css';
-// import 'rheostat/css/slider-horizontal.css';
-// import './Slider.css';
+// import "rheostat/css/slider.css"
+// import "rheostat/css/slider-horizontal.css"
+import "../styles/slider.css"
 
 export default class Slider extends React.Component {
   handleChange = sliderState => {
