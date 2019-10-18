@@ -27,17 +27,16 @@ export const query = graphql`
                 }
             }
         }
-        otherPosts: allContentfulBlogPost(filter: {subFeature: {eq: false}, featured: {eq: false}, draft: {eq: false}}, sort: {fields: [updatedAt,viewNumber ], order: DESC}) {
+        otherPosts: allContentfulBlogPost(filter: {subFeature: {eq: false}, featured: {eq: false}, draft: {eq: false}}, sort: {fields: [updatedAt ], order: DESC}) {
             edges {
                 node {
                     ...BlogBasic
                 }
             }
         }
-        topTrends:allContentfulBlogPost(filter: {draft: {eq: false}}, sort: {fields: [updatedAt,viewNumber], order: DESC}) {
+        topTrends:allContentfulBlogPost(filter: {draft: {eq: false}}, sort: {fields: [updatedAt], order: DESC}) {
             edges {
                 node {
-                    heartedNumber
                     title
                     fields {
                         slug
