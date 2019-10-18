@@ -64,8 +64,11 @@ class ProfileForm extends Component {
   constructor(props) {
     super(props)
     const user = getProfile()
+    console.log(user)
     let { username: inputName } = user["https://www.prawn-dumpling.com"].app_metadata
+    console.log(inputName)
     inputName = inputName === undefined ? "" : inputName
+    // inputName = inputName ? inputName : localStorage.getItem("userName")
 
     this.state = {
       open: false,
@@ -78,6 +81,10 @@ class ProfileForm extends Component {
   componentDidMount() {
     // get user info
     //TODO: fetch with GraphQL and fill in as placeholder
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    //TODO: change when update
   }
 
   handleClick = () => {
@@ -109,13 +116,14 @@ class ProfileForm extends Component {
       data,
     })
     if (res.data && res.data.status && res.data.status === 200) {
-      if (data.userName) {
-        localStorage.setItem("userName", data.userName)
-      }
+      // if (data.userName) {
+      //   localStorage.setItem("userName", data.userName)
+      // }
       this.setState({
           ...this.state,
           infoType: "success",
           msg: "Success!" + res.data.msg,
+          inputName: data.userName,
         },
       )
       //TODO: update user info

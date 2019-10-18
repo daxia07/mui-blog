@@ -74,13 +74,14 @@ export const handleAuthentication = () => {
 }
 
 export const getProfile = () => {
+  //TODO: refresh token and user app meta
   // load temp meta data
   // const appMeta = JSON.parse(localStorage.getItem("appMeta"))
   const accessToken = localStorage.getItem("accessToken")
-  const localUserName = localStorage.getItem("userName")
-  if (localUserName) {
-    user["userName"] = localUserName
-  }
+  // const localUserName = localStorage.getItem("userName")
+  // if (localUserName) {
+  //   user["userName"] = localUserName
+  // }
   if (accessToken) {
     user["accessToken"] = accessToken
   }
