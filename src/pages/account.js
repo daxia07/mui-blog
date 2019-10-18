@@ -27,9 +27,10 @@ const Account = ({ location }) => {
     return <p>Redirecting to login...</p>
   }
   const user = getProfile()
+  const userName = user
   const { app_metadata: appMetaData } = user[`https://www.prawn-dumpling.com`]
   const pathArray = location.pathname.split("/")
-  if (!Object.keys(appMetaData).includes("username")) {
+  if (!userName && !Object.keys(appMetaData).includes("username")) {
     //create a ref for children to modify message
     //OR: use redux to convey messages
     if (pathArray.includes("account") && pathArray.includes("profile")) {

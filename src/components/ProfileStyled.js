@@ -110,9 +110,7 @@ class ProfileForm extends Component {
     })
     if (res.data && res.data.status && res.data.status === 200) {
       if (data.userName) {
-        localStorage.setItem("appMeta", JSON.stringify({
-          "userName": data.userName,
-        }))
+        localStorage.setItem("userName", data.userName)
       }
       this.setState({
           ...this.state,

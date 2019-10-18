@@ -77,12 +77,10 @@ export const getProfile = () => {
   // load temp meta data
   // const appMeta = JSON.parse(localStorage.getItem("appMeta"))
   const accessToken = localStorage.getItem("accessToken")
-  // if (appMeta) {
-  //   user["https://prawn-dumpling.com"].app_metadata = {
-  //     ...user["https://prawn-dumpling.com"].app_metadata,
-  //     ...appMeta,
-  //   }
-  // }
+  const localUserName = localStorage.getItem("userName")
+  if (localUserName) {
+    user["userName"] = localUserName
+  }
   if (accessToken) {
     user["accessToken"] = accessToken
   }
