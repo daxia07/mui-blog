@@ -63,10 +63,15 @@ const validationSchema = Yup.object({
 class ProfileForm extends Component {
   constructor(props) {
     super(props)
+    const user = getProfile()
+    let { username: inputName } = user["https://www.prawn-dumpling.com"].app_metadata
+    inputName = inputName === undefined ? "" : inputName
+
     this.state = {
       open: false,
       infoType: "info",
       msg: "",
+      inputName,
     }
   }
 
@@ -86,8 +91,12 @@ class ProfileForm extends Component {
     this.setState({ ...this.state, open: false })
   }
 
+
   submit = async (data) => {
     console.log("submit")
+    if (this.state.inputName) {
+      delete data.userName
+    }
     console.log(data)
     this.handleClick()
     console.log(this.state)
@@ -100,10 +109,15 @@ class ProfileForm extends Component {
       data,
     })
     if (res.data && res.data.status && res.data.status === 200) {
+      if (data.userName) {
+        localStorage.setItem("appMeta", JSON.stringify({
+          "userName": data.userName,
+        }))
+      }
       this.setState({
           ...this.state,
           infoType: "success",
-          msg: res.data.msg,
+          msg: "Success!" + res.data.msg,
         },
       )
       //TODO: update user info
@@ -111,27 +125,25 @@ class ProfileForm extends Component {
       this.setState({
         ...this.state,
         infoType: "warning",
-        msg: res.data.msg,
+        msg: "Warning!" + res.data.msg,
       })
     } else {
       this.setState({
         ...this.state,
         infoType: "error",
-        msg: res.data.msg && "Error, please try later",
+        msg: "Error!" + res.data.msg && "Error, please try later",
       })
     }
+
     console.log(res.data)
   }
 
   render() {
     //TODO: fetch data via GraphQL client
-    const user = getProfile()
-    let { username: inputName } = user["https://www.prawn-dumpling.com"].app_metadata
-    inputName = inputName === undefined ? "" : inputName
     const classes = this.props
     const vertical = "top"
     const horizontal = "center"
-    const values = { userName: inputName, fullName: "", shortBio: "", socialLink: "" }
+    const values = { userName: this.state.inputName, fullName: "", shortBio: "", socialLink: "" }
     return (
       <React.Fragment>
         <div className={classes.container}>

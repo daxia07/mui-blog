@@ -75,14 +75,14 @@ export const handleAuthentication = () => {
 
 export const getProfile = () => {
   // load temp meta data
-  const appMeta = localStorage.getItem("appMeta")
+  // const appMeta = JSON.parse(localStorage.getItem("appMeta"))
   const accessToken = localStorage.getItem("accessToken")
-  if (appMeta) {
-    user["https://prawn-dumpling.com"].app_metadata = {
-      ...user["https://prawn-dumpling.com"].app_metadata,
-      ...appMeta,
-    }
-  }
+  // if (appMeta) {
+  //   user["https://prawn-dumpling.com"].app_metadata = {
+  //     ...user["https://prawn-dumpling.com"].app_metadata,
+  //     ...appMeta,
+  //   }
+  // }
   if (accessToken) {
     user["accessToken"] = accessToken
   }

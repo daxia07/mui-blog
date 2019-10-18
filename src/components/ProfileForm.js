@@ -14,6 +14,7 @@ export const Form = props => {
     handleSubmit,
     handleChange,
     isValid,
+    initialValues,
     // setFieldTouched,
   } = props
   // console.table(props)
@@ -33,6 +34,7 @@ export const Form = props => {
         value={userName}
         onChange={handleChange}
         fullWidth
+        disabled={!!initialValues.userName}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -101,6 +103,7 @@ export const Form = props => {
         variant="contained"
         color="primary"
         disabled={!isValid}
+        style={{ maxWidth: `100%` }}
       >
         Submit
       </Button>
