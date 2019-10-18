@@ -11,6 +11,14 @@
 10. service worker for PWA
 11. A little theming for articles
 
+## TODO:
+1. lock up username after initial set up
+2. node server check user app_metadata for profile initialization
+3. locate empty message for submitting profile
+4. preview for draft editor
+5. format transformation between rick text and markdown
+6. use external cdn for libraries
+
 ## Other issues
 1. SPA with react with react router
 2. CRUD and update timely without re-deploying with webhook

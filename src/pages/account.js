@@ -20,7 +20,7 @@ const Home = ({ user }) => {
   return <UserArticles/>
 }
 
-const Account = () => {
+const Account = ({ location }) => {
   const classes = useStyles()
   if (!isAuthenticated()) {
     login()
@@ -28,15 +28,17 @@ const Account = () => {
   }
   const user = getProfile()
   const { app_metadata: appMetaData } = user[`https://www.prawn-dumpling.com`]
+  const pathArray = location.pathname.split("/")
   if (!Object.keys(appMetaData).includes("username")) {
-    //TODO: pull snackBar to the upper level as message container
     //create a ref for children to modify message
     //OR: use redux to convey messages
-    console.log("navigating to update profile")
-    navigate("/account/profile")
-    //TODO: pop up message
+    if (pathArray.includes("account") && pathArray.includes("profile")) {
+      //TODO: pop up message to notify user
+    } else {
+      navigate("/account/profile")
+    }
   }
-  console.log(user)
+  // console.log(user)
   return (
     <Layout classPrefix="acc" items={accountNav}>
       <SEO title={"Account"}/>
