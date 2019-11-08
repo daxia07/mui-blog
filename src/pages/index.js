@@ -13,28 +13,28 @@ import useStyles from "../styles/style"
 
 export const query = graphql`
     query IndexQuery {
-        featured: allContentfulBlogPost(filter: {draft: {eq: false}, featured: {eq: true}}, sort: {fields: updatedAt, order: DESC}, limit: 1) {
+        featured: allContentfulBlogPost(filter: {draft: {eq: false}, featured: {eq: true}, node_locale: {eq: "en-US"}}, sort: {fields: updatedAt, order: DESC}, limit: 1) {
             edges {
                 node {
                     ...BlogFeature
                 }
             }
         }
-        subFeatured: allContentfulBlogPost(filter: {subFeature: {eq: true}, draft: {eq: false}}, sort: {fields: updatedAt, order: DESC}, limit:2) {
+        subFeatured: allContentfulBlogPost(filter: {subFeature: {eq: true}, draft: {eq: false}, node_locale: {eq: "en-US"}}, sort: {fields: updatedAt, order: DESC}, limit:2) {
             edges {
                 node {
                     ...BlogSubFeature
                 }
             }
         }
-        otherPosts: allContentfulBlogPost(filter: {subFeature: {eq: false}, featured: {eq: false}, draft: {eq: false}}, sort: {fields: [updatedAt ], order: DESC}) {
+        otherPosts: allContentfulBlogPost(filter: {draft: {eq: false}, node_locale: {eq: "en-US"}}, sort: {fields: [updatedAt ], order: DESC}) {
             edges {
                 node {
                     ...BlogBasic
                 }
             }
         }
-        topTrends:allContentfulBlogPost(filter: {draft: {eq: false}}, sort: {fields: [updatedAt], order: DESC}) {
+        topTrends:allContentfulBlogPost(filter: {draft: {eq: false}, node_locale: {eq: "en-US"}}, sort: {fields: [updatedAt], order: DESC}) {
             edges {
                 node {
                     title
