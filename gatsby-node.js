@@ -1,9 +1,8 @@
 const path = require("path")
 const _ = require("lodash")
 
-const slugify = text => text.toLowerCase()
-  .replace(/ /g, "-")
-  .replace(/[^\w-]+/g, "")
+const slugify = text => text.toLowerCase().replace(/\W/g, " ").trim().replace(/ +/g, '-')
+
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions

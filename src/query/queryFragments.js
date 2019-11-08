@@ -34,9 +34,6 @@ export const blogBasicFragment = graphql`
         title
         tags
         category
-        description {
-            description
-        }
         fields {
             slug
         }
